@@ -1,48 +1,68 @@
-# Mathias Monuments
+# Mathias Monuments - Heritage Luxury Since 1906
 
-A professional website for Mathias Monuments - Preserving History Through Stone.
+A modern Next.js website for Mathias Monuments featuring the 2026 'Heritage Luxury' design system.
 
 ## 🌐 Live Website
 
 Once GitHub Pages is enabled, the website will be available at: `https://bradyudovich.github.io/MathiasMonuments/`
 
-## 📋 Features
+## ✨ Features
 
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Modern UI**: Clean, professional design with smooth animations
-- **Navigation**: Sticky header with smooth scrolling to sections
-- **Services Section**: Showcases four main service offerings with card layout
-- **Contact Form**: Interactive contact form with client-side validation
-- **Professional Styling**: Custom CSS with modern color scheme and typography
+### Brand Identity
+- **Typography**: Cormorant Garamond (headlines) and Montserrat (body) with display swap
+- **Color Palette**: Deep Onyx (#0F172A), Slate-50 (#F8FAFC), Burnished Gold (#C5A059)
+- **Historical Heritage**: Celebrating 120 years since 1906
+
+### Interactive Components
+- **Split Hero**: Parallax-scrolling monument imagery with typographic content
+- **Bento Legacy Grid**: Three-tile layout showcasing history, inventory map, and expertise
+- **Dynamic Inventory**: Filterable monument collection (Upright, Slant, Flush Marker, Bench)
+- **Framer Motion Animations**: Reveal-on-scroll effects throughout
+
+### Technical Stack
+- **Framework**: Next.js 14 with App Router
+- **Animations**: Framer Motion
+- **Static Export**: Pre-rendered for optimal performance
+- **Responsive Design**: Mobile-first approach with breakpoints
 
 ## 🚀 Enabling GitHub Pages
 
-To publish this website, follow these steps:
-
-1. Go to your repository settings: `https://github.com/bradyudovich/MathiasMonuments/settings`
-2. Scroll down to the "Pages" section in the left sidebar
+1. Go to repository settings: `https://github.com/bradyudovich/MathiasMonuments/settings`
+2. Navigate to "Pages" section in the left sidebar
 3. Under "Build and deployment":
    - **Source**: Select "GitHub Actions"
-4. The workflow will automatically deploy the site when you merge to the `main` branch
-5. Once deployed, your site will be available at: `https://bradyudovich.github.io/MathiasMonuments/`
+4. The workflow will automatically deploy when you merge to the `main` branch
+5. Site will be available at: `https://bradyudovich.github.io/MathiasMonuments/`
 
 ## 📁 Project Structure
 
 ```
 MathiasMonuments/
-├── index.html          # Main HTML file with website structure
-├── styles.css          # CSS styling for the website
-├── script.js           # JavaScript for interactivity
-├── .gitignore         # Git ignore file
+├── app/
+│   ├── layout.tsx          # Root layout with metadata and fonts
+│   └── page.tsx            # Landing page composition
+├── components/
+│   ├── InteractiveHero.tsx # Split hero with parallax effect
+│   ├── BentoLegacyGrid.tsx # Bento-style grid layout
+│   └── DynamicInventory.tsx # Filterable inventory component
+├── styles/
+│   └── globals.css         # Design system and responsive styles
+├── public/
+│   └── images/             # Monument images and assets
+├── next.config.js          # Next.js configuration with static export
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml # GitHub Actions workflow for deployment
-└── README.md          # This file
+│       └── deploy.yml      # GitHub Actions deployment workflow
+└── README.md               # This file
 ```
 
 ## 🛠️ Local Development
 
-To test the website locally:
+### Prerequisites
+- Node.js 20.x or later
+- npm or yarn
+
+### Setup
 
 1. Clone the repository:
    ```bash
@@ -50,37 +70,74 @@ To test the website locally:
    cd MathiasMonuments
    ```
 
-2. Start a local web server (using Python):
+2. Install dependencies:
    ```bash
-   python3 -m http.server 8000
+   npm ci
    ```
 
-3. Open your browser and navigate to:
+3. Run development server:
+   ```bash
+   npm run dev
    ```
-   http://localhost:8000
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:3000
    ```
 
-## 📝 Sections
+### Build and Export
 
-The website includes the following sections:
+To create a production build:
+```bash
+npm run build
+```
 
-1. **Hero Section**: Eye-catching introduction with tagline and call-to-action
-2. **About Us**: Information about Mathias Monuments and their expertise
-3. **Our Services**: Four service cards highlighting key offerings:
-   - Custom Monuments
-   - Monument Restoration
-   - Memorial Plaques
-   - Engraving Services
-4. **Contact Us**: Contact form for inquiries
-5. **Footer**: Copyright information
+This will generate a static export in the `out/` directory, ready for deployment.
 
-## 🎨 Customization
+## 📝 Website Sections
 
-You can easily customize the website by editing:
+1. **Interactive Hero**: Split-screen design with parallax imagery and CTA "Request a Design Guide"
+2. **Legacy Intro**: Historical narrative featuring Joseph L. Mathias and 120-year legacy
+3. **Bento Grid**: 
+   - 120 Years of History
+   - Live Inventory Map (placeholder for integration)
+   - Cemetery Bylaw Expertise
+4. **Dynamic Inventory**: Filterable monument collection with animations
+5. **Footer**: Contact information, address (175 E. Main Street, Westminster, MD), and service areas
 
-- **Content**: Modify text in `index.html`
-- **Styling**: Update colors, fonts, and layout in `styles.css`
-- **Functionality**: Add or modify interactions in `script.js`
+## 🎨 Design System
+
+### Colors
+- **Deep Onyx**: `#0F172A` - Primary dark color
+- **Slate-50**: `#F8FAFC` - Background and light text
+- **Burnished Gold**: `#C5A059` - Accent color for CTAs and highlights
+
+### Typography
+- **Headlines**: Cormorant Garamond (serif, 400/600/700 weights)
+- **Body**: Montserrat (sans-serif, 400/500/600/700 weights)
+
+### Responsive Breakpoints
+- Mobile: < 640px
+- Tablet: 640px - 968px
+- Desktop: > 968px
+
+## 📸 Images
+
+Place high-resolution monument images in `public/images/`:
+- `monument-hero.jpg` - Hero section (1920x1080px recommended)
+- `upright-1.jpg`, `upright-2.jpg` - Upright monuments
+- `slant-1.jpg`, `slant-2.jpg` - Slant markers
+- `flush-1.jpg` - Flush marker
+- `bench-1.jpg` - Memorial bench
+
+See `public/images/README.md` for detailed image specifications.
+
+## 🚢 Deployment
+
+The site is configured for automatic deployment via GitHub Actions:
+- Triggers on push to `main` branch
+- Builds Next.js static export
+- Deploys to GitHub Pages
 
 ## 📄 License
 
