@@ -6,7 +6,10 @@ const isPagesSubpath = (): boolean => {
   const repo = process.env.GITHUB_REPOSITORY
   if (!repo) return false
   
-  const [owner, repoName] = repo.split('/')
+  const parts = repo.split('/')
+  if (parts.length !== 2) return false
+  
+  const [owner, repoName] = parts
   // User/org pages repos are in format "owner.github.io"
   // Project pages repos need basePath
   return repoName !== `${owner}.github.io`
@@ -18,7 +21,10 @@ const getBasePath = (): string => {
   const repo = process.env.GITHUB_REPOSITORY
   if (!repo) return ''
   
-  const repoName = repo.split('/')[1]
+  const parts = repo.split('/')
+  if (parts.length !== 2) return ''
+  
+  const repoName = parts[1]
   return `/${repoName}`
 }
 
