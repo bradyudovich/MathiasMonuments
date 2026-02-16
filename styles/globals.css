@@ -90,7 +90,7 @@ p {
 .hero-split__right {
   position: relative;
   overflow: hidden;
-  background-color: #0f172a;
+  background-color: var(--deep-onyx);
   min-height: 100vh;
 }
 
@@ -98,7 +98,7 @@ p {
   position: absolute;
   inset: 0;
   will-change: transform;
-  background-color: #0f172a;
+  background-color: var(--deep-onyx);
   min-height: 100vh;
 }
 
