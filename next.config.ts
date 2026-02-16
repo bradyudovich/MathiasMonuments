@@ -1,15 +1,24 @@
 import type { NextConfig } from 'next'
 
+// Parse and validate GITHUB_REPOSITORY environment variable
+// Returns [owner, repoName] if valid, or null if invalid
+const parseGitHubRepository = (): [string, string] | null => {
+  const repo = process.env.GITHUB_REPOSITORY
+  if (!repo) return null
+  
+  const parts = repo.split('/')
+  if (parts.length !== 2) return null
+  
+  return [parts[0], parts[1]]
+}
+
 // Detect if we're deploying to a GitHub Pages subpath
 // GITHUB_REPOSITORY format is "owner/repo"
 const isPagesSubpath = (): boolean => {
-  const repo = process.env.GITHUB_REPOSITORY
-  if (!repo) return false
+  const parsed = parseGitHubRepository()
+  if (!parsed) return false
   
-  const parts = repo.split('/')
-  if (parts.length !== 2) return false
-  
-  const [owner, repoName] = parts
+  const [owner, repoName] = parsed
   // User/org pages repos are in format "owner.github.io"
   // Project pages repos need basePath
   return repoName !== `${owner}.github.io`
@@ -18,13 +27,10 @@ const isPagesSubpath = (): boolean => {
 const getBasePath = (): string => {
   if (!isPagesSubpath()) return ''
   
-  const repo = process.env.GITHUB_REPOSITORY
-  if (!repo) return ''
+  const parsed = parseGitHubRepository()
+  if (!parsed) return ''
   
-  const parts = repo.split('/')
-  if (parts.length !== 2) return ''
-  
-  const repoName = parts[1]
+  const repoName = parsed[1]
   return `/${repoName}`
 }
 
