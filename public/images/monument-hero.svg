@@ -1,4 +1,28 @@
-<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="800" fill="#0F172A"/>
-  <text x="600" y="400" font-family="serif" font-size="48" fill="#C5A059" text-anchor="middle">Monument Hero</text>
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- Dark gradient background for elegant appearance -->
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#heroGradient)"/>
+  
+  <!-- Subtle monument silhouette in center -->
+  <g transform="translate(860, 300)" opacity="0.15">
+    <!-- Monument base -->
+    <rect x="0" y="380" width="200" height="80" fill="#C5A059" rx="4"/>
+    <!-- Monument body -->
+    <rect x="20" y="180" width="160" height="200" fill="#C5A059" rx="2"/>
+    <!-- Monument top -->
+    <path d="M 40 180 L 100 120 L 160 180 Z" fill="#C5A059"/>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="300" cy="200" r="3" fill="#C5A059" opacity="0.3"/>
+  <circle cx="1620" cy="880" r="3" fill="#C5A059" opacity="0.3"/>
+  <circle cx="1700" cy="300" r="2" fill="#C5A059" opacity="0.2"/>
+  <circle cx="220" cy="850" r="2" fill="#C5A059" opacity="0.2"/>
 </svg>

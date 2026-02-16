@@ -18,40 +18,28 @@ export default function InteractiveHero() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <motion.p
+          className="hero-kicker"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          style={{ 
-            color: 'var(--burnished-gold)', 
-            fontSize: '1rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            marginBottom: '1rem'
-          }}
         >
           Since 1906
         </motion.p>
         
         <motion.h1
+          className="hero-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          style={{ marginBottom: '1.5rem' }}
         >
           Preserving Legacy Through Stone
         </motion.h1>
         
         <motion.p
+          className="hero-paragraph"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          style={{ 
-            fontSize: '1.125rem', 
-            lineHeight: 1.8,
-            marginBottom: '1rem',
-            color: 'rgba(248, 250, 252, 0.9)'
-          }}
         >
           Four generations of craftsmanship serving Maryland, Pennsylvania, and Virginia. 
           From marble to high-density granite, we create monuments that honor life's most 
@@ -59,15 +47,10 @@ export default function InteractiveHero() {
         </motion.p>
 
         <motion.p
+          className="hero-paragraph"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          style={{ 
-            fontSize: '1rem', 
-            lineHeight: 1.8,
-            marginBottom: '2rem',
-            color: 'rgba(248, 250, 252, 0.8)'
-          }}
         >
           Trusted cemetery bylaw experts with unmatched expertise in design, installation, 
           and restoration.
@@ -92,7 +75,7 @@ export default function InteractiveHero() {
           style={{ y: parallaxY }}
         >
           <Image
-            src="/images/monument-hero.jpg"
+            src="/images/monument-hero.svg"
             alt="Premium granite monument showcasing our craftsmanship"
             fill
             priority

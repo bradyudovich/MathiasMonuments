@@ -75,6 +75,7 @@ p {
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
   gap: 0;
+  background-color: var(--deep-onyx);
 }
 
 .hero-split__left {
@@ -89,12 +90,16 @@ p {
 .hero-split__right {
   position: relative;
   overflow: hidden;
+  background-color: #0f172a;
+  min-height: 100vh;
 }
 
 .hero-parallax {
   position: absolute;
   inset: 0;
   will-change: transform;
+  background-color: #0f172a;
+  min-height: 100vh;
 }
 
 .hero-parallax img {
@@ -124,6 +129,35 @@ p {
   background-color: #d4af63;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+}
+
+/* Hero Text Element Styles */
+.hero-kicker {
+  color: var(--burnished-gold);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  margin-bottom: 1.5rem;
+  color: var(--slate-50);
+}
+
+.hero-paragraph {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: var(--slate-50);
+  opacity: 0.9;
+}
+
+.hero-paragraph:last-of-type {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 /* Bento Grid */
