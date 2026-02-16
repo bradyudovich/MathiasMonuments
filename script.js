@@ -8,11 +8,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            // Move focus to the target for accessibility
+            target.focus({ preventScroll: true });
         }
     });
 });
 
-// Contact form submission handler
+// Contact form submission handler (for legacy index.html)
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -32,12 +34,14 @@ if (contactForm) {
     });
 }
 
-// Add scroll effect to header
+// Add scroll effect to header - toggle header--scrolled class at 80px
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    if (window.scrollY > 100) {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
-    } else {
-        header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+    if (header) {
+        if (window.scrollY > 80) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
+        }
     }
 });

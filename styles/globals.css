@@ -97,6 +97,9 @@ p {
   overflow: hidden;
   background-color: var(--deep-onyx);
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-parallax {
@@ -105,6 +108,20 @@ p {
   will-change: transform;
   background-color: var(--deep-onyx);
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.hero-text-box {
+  max-width: 600px;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 8px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .hero-parallax img {
@@ -137,6 +154,20 @@ p {
 }
 
 /* Hero Text Element Styles */
+.hero-trust-badge {
+  color: var(--slate-50);
+  background-color: rgba(197, 160, 89, 0.2);
+  border: 1px solid var(--burnished-gold);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 .hero-kicker {
   color: var(--burnished-gold);
   font-size: 1rem;
@@ -342,6 +373,42 @@ p {
   background: var(--deep-onyx);
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.header--scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Contact Button Styles - WCAG AA Compliant */
+.contact-btn {
+  background-color: #F6C85F;
+  color: #0F172A;
+  padding: 0.625rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.contact-btn:hover {
+  background-color: #f4d175;
+  transform: translateY(-1px);
+}
+
+.contact-btn:focus {
+  outline: none;
+  border-color: #F6C85F;
+  box-shadow: 0 0 0 3px rgba(246, 200, 95, 0.3);
+}
+
+.contact-btn:focus-visible {
+  outline: 2px solid #F6C85F;
+  outline-offset: 2px;
 }
 
 .navbar-content {

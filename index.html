@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mathias Monuments - Preserving History Through Stone">
-    <title>Mathias Monuments</title>
+    <meta name="description" content="Family-owned monument craftsmanship serving Maryland, Pennsylvania, and Virginia since 1906. Expert custom granite memorials, cemetery bylaw expertise, and restoration services. Located in Westminster, MD.">
+    <title>Mathias Monuments | Custom Memorials in Westminster, MD</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Mathias Monuments & Memorials",
+      "telephone": "410-848-4600",
+      "email": "info@mathiasmemorials.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "175 E. Main Street",
+        "addressLocality": "Westminster",
+        "addressRegion": "MD",
+        "postalCode": "21157",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "url": "https://mathiasmemorials.com"
+    }
+    </script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="container">
-                <h1 class="logo">Mathias Monuments</h1>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="container navbar-content">
+                <h1 class="navbar-slogan">Mathias Monuments & Memorials</h1>
+                <a href="#contact" class="contact-btn" aria-label="Contact Us - Go to contact form">Contact Us</a>
             </div>
         </nav>
     </header>
@@ -25,9 +52,14 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <h2>Preserving History Through Stone</h2>
+                <p class="hero-trust-badge">Serving Families Since 1906</p>
+                <h2>Preserving Legacy Through Stone</h2>
                 <p>Creating timeless monuments and memorials that honor your loved ones</p>
-                <a href="#contact" class="cta-button">Get in Touch</a>
+                <a href="#contact" class="cta-button">Request a Design Guide</a>
+            </div>
+            <div class="hero-text-section">
+                <h3>Since 1906: A Legacy of Excellence</h3>
+                <p>For over a century, Mathias Monuments has been a pillar of craftsmanship and compassion in the monument industry. Founded in 1906, our family-owned business has passed down the art of memorial creation through four generations.</p>
             </div>
         </section>
 
@@ -66,8 +98,40 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Us</h2>
-                <p>We're here to help you create a lasting tribute. Reach out to us to discuss your needs.</p>
-                <form class="contact-form">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Visit Us</h3>
+                        <address>
+                            175 E. Main Street<br>
+                            Westminster, MD 21157
+                        </address>
+                        <p><a href="tel:410-848-4600" class="contact-phone">410-848-4600</a></p>
+                        <p><a href="mailto:info@mathiasmemorials.com" class="contact-email">info@mathiasmemorials.com</a></p>
+                    </div>
+                    <div class="contact-hours">
+                        <h3>Hours</h3>
+                        <ul>
+                            <li>M: 9:00–17:00</li>
+                            <li>T: 9:00–17:00</li>
+                            <li>W: 9:00–17:00</li>
+                            <li>Th: 9:00–17:00</li>
+                            <li>F: 9:00–16:00</li>
+                        </ul>
+                    </div>
+                    <div class="contact-map">
+                        <iframe
+                            title="Mathias Monuments Map"
+                            src="https://www.google.com/maps?q=175%20E.%20Main%20Street%2C%20Westminster%2C%20MD%2021157&output=embed"
+                            width="100%"
+                            height="300"
+                            style="border:0"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <form class="contact-form" action="https://formspree.io/f/yourFormId" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -88,7 +152,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Mathias Monuments. All rights reserved.</p>
+            <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
         </div>
     </footer>
 
