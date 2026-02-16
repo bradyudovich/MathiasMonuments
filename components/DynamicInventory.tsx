@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import PlaceholderImage from './PlaceholderImage'
 
 type MonumentType = 'Upright' | 'Slant' | 'Flush Marker' | 'Bench'
 
@@ -11,7 +11,6 @@ interface InventoryItem {
   name: string
   type: MonumentType
   description: string
-  image: string
 }
 
 const INVENTORY: InventoryItem[] = [
@@ -20,42 +19,36 @@ const INVENTORY: InventoryItem[] = [
     name: 'Classic Upright Monument',
     type: 'Upright',
     description: 'Traditional upright design in premium granite with custom engraving options.',
-    image: '/images/upright-1.jpg'
   },
   {
     id: 2,
     name: 'Heritage Slant Marker',
     type: 'Slant',
     description: 'Elegant slant design offering excellent visibility and timeless appeal.',
-    image: '/images/slant-1.jpg'
   },
   {
     id: 3,
     name: 'Garden Flush Marker',
     type: 'Flush Marker',
     description: 'Low-profile bronze or granite marker for lawn-level memorials.',
-    image: '/images/flush-1.jpg'
   },
   {
     id: 4,
     name: 'Memorial Bench',
     type: 'Bench',
     description: 'Functional and beautiful granite bench for reflection and remembrance.',
-    image: '/images/bench-1.jpg'
   },
   {
     id: 5,
     name: 'Grand Upright Monument',
     type: 'Upright',
     description: 'Substantial family monument with intricate detailing and lasting presence.',
-    image: '/images/upright-2.jpg'
   },
   {
     id: 6,
     name: 'Contemporary Slant',
     type: 'Slant',
     description: 'Modern slant design with clean lines and polished finish.',
-    image: '/images/slant-2.jpg'
   },
 ]
 
@@ -118,13 +111,10 @@ export default function DynamicInventory() {
               animate={isInView ? "visible" : "hidden"}
               variants={cardVariants}
             >
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={400}
-                height={300}
+              <PlaceholderImage 
+                aspect="4/3"
+                ariaLabel={item.name}
                 className="inventory-card__image"
-                loading="lazy"
               />
               <div className="inventory-card__content">
                 <h3 className="inventory-card__title">{item.name}</h3>
