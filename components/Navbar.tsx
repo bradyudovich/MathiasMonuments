@@ -1,35 +1,25 @@
-'use client'
+import React from "react";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-
-const Navbar: React.FC = () => {
+export function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="navbar-content">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="navbar-slogan"
-        >
-          Preserving Legacy Through Stone
-        </motion.div>
-        
-        <motion.a
-          href="tel:410-848-4600"
-          className="navbar-phone"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          whileHover={{ scale: 1.05 }}
-          aria-label="Call us at 410-848-4600"
-        >
-          410-848-4600
-        </motion.a>
+    <header className="bg-slate-900">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" className="font-serif text-white text-lg leading-none">
+          Mathias Monuments & Memorials
+        </a>
+
+        <div>
+          <a
+            href="tel:410-848-4600"
+            className="text-amber-400 hover:underline font-medium"
+            aria-label="Call Mathias Monuments at 410-848-4600"
+          >
+            410-848-4600
+          </a>
+        </div>
       </div>
-    </nav>
-  )
+    </header>
+  );
 }
 
-export default Navbar
+export default Navbar;

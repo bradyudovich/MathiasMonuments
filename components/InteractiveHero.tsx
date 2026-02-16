@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Image from 'next/image'
+import PlaceholderImage from './PlaceholderImage'
 
 export default function InteractiveHero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -74,13 +74,9 @@ export default function InteractiveHero() {
           className="hero-parallax"
           style={{ y: parallaxY }}
         >
-          <Image
-            src="/images/monument-hero.svg"
-            alt="Premium granite monument showcasing our craftsmanship"
-            fill
-            priority
-            style={{ objectFit: 'cover' }}
-            sizes="50vw"
+          <PlaceholderImage 
+            aspect="video" 
+            ariaLabel="Premium granite monument showcasing our craftsmanship" 
           />
         </motion.div>
       </div>

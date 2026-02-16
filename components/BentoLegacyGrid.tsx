@@ -40,44 +40,8 @@ export default function BentoLegacyGrid() {
       </motion.div>
 
       <motion.div 
-        className="bento-tile bento-tile--large"
-        custom={1}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={tileVariants}
-      >
-        <h3>Live Inventory Map</h3>
-        <p>
-          Explore our extensive selection of monuments and memorial designs. Each piece represents 
-          our commitment to quality craftsmanship and personalized service.
-        </p>
-        {/* Placeholder for live inventory map integration */}
-        <div className="inventory-map-frame" style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          color: 'var(--deep-onyx)',
-          fontFamily: 'var(--font-body)',
-          fontSize: '1rem',
-          fontWeight: 600,
-          border: '2px dashed rgba(15, 23, 42, 0.1)'
-        }}>
-          Interactive Map Coming Soon
-        </div>
-        {/* 
-          Future integration: 
-          <iframe 
-            src="/inventory-map" 
-            className="inventory-map-frame"
-            title="Live Inventory Map"
-          />
-        */}
-      </motion.div>
-
-      <motion.div 
         className="bento-tile"
-        custom={2}
+        custom={1}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={tileVariants}
