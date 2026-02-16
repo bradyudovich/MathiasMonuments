@@ -1,3 +1,16 @@
+# GitHub Pages Deployment Workflow
+#
+# This workflow builds and deploys a Next.js static export to GitHub Pages.
+# It uses the official GitHub Pages artifact + deploy actions to ensure
+# the deployment is recognized by GitHub Pages UI immediately.
+#
+# Lockfile handling:
+# - When package-lock.json exists, npm ci is used for deterministic installs
+# - When package-lock.json is missing, npm install is used as a fallback
+# - For best practices, generate package-lock.json locally with:
+#   npm install --package-lock-only
+#   Then commit the lockfile to ensure deterministic CI builds
+
 name: Deploy Next.js to GitHub Pages
 
 on:
@@ -19,23 +32,58 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Check for package-lock.json
+        id: check-lockfile
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "lockfile_exists=true" >> $GITHUB_OUTPUT
+            echo "✓ package-lock.json found - will use npm ci for deterministic install"
+          else
+            echo "lockfile_exists=false" >> $GITHUB_OUTPUT
+            echo "⚠ package-lock.json not found - will use npm install (non-deterministic)"
+            echo "  Consider generating a lockfile locally with: npm install --package-lock-only"
+          fi
+
+      - name: Install dependencies (deterministic)
+        if: steps.check-lockfile.outputs.lockfile_exists == 'true'
+        run: |
+          echo "Installing dependencies with npm ci (deterministic)..."
+          npm ci
+
+      - name: Install dependencies (fallback)
+        if: steps.check-lockfile.outputs.lockfile_exists == 'false'
+        run: |
+          echo "Installing dependencies with npm install (fallback)..."
+          npm install
 
       - name: Build Next.js site
-        run: npm run build
+        run: |
+          echo "Building Next.js static export..."
+          npm run build
+          echo "✓ Build completed successfully"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Verify output directory
+        run: |
+          if [ ! -d "./out" ]; then
+            echo "❌ Error: ./out directory not found after build"
+            echo "The build may have failed or output configuration is incorrect"
+            exit 1
+          fi
+          echo "✓ Output directory ./out verified"
+          echo "Contents:"
+          ls -lah ./out
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
 
@@ -48,4 +96,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v1
