@@ -1,10 +1,13 @@
+import Navbar from '@/components/Navbar'
 import InteractiveHero from '@/components/InteractiveHero'
 import BentoLegacyGrid from '@/components/BentoLegacyGrid'
 import DynamicInventory from '@/components/DynamicInventory'
+import Footer from '@/components/Footer'
 
 export default function HomePage() {
   return (
     <main>
+      <Navbar />
       <InteractiveHero />
       
       <section className="lead-intro">
@@ -34,41 +37,7 @@ export default function HomePage() {
 
       <DynamicInventory />
 
-      <footer id="contact">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>Mathias Monuments</h3>
-            <p>
-              Preserving history through stone since 1906. Four generations of craftsmanship 
-              serving Maryland, Pennsylvania, and Virginia.
-            </p>
-          </div>
-          
-          <div className="footer-section">
-            <h3>Visit Us</h3>
-            <address>
-              175 E. Main Street<br />
-              Westminster, MD 21157<br />
-              <br />
-              Serving MD, PA & VA
-            </address>
-          </div>
-          
-          <div className="footer-section">
-            <h3>Our Expertise</h3>
-            <p>
-              • Custom Monument Design<br />
-              • Cemetery Bylaw Consultation<br />
-              • Monument Restoration<br />
-              • High-Density Granite Specialists
-            </p>
-          </div>
-        </div>
-        
-        <div className="footer-bottom">
-          <p>&copy; 2026 Mathias Monuments. All rights reserved. | Since 1906</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

@@ -1,0 +1,76 @@
+# CI Workflow for Pull Requests and Main Branch
+#
+# This workflow ensures the site builds successfully before merging changes
+# and on every push to the main branch. It helps catch build errors early
+# and prevents deployments of broken code.
+
+name: CI - Build Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Check for package-lock.json
+        id: check-lockfile
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "lockfile_exists=true" >> $GITHUB_OUTPUT
+            echo "✓ package-lock.json found - will use npm ci for deterministic install"
+          else
+            echo "lockfile_exists=false" >> $GITHUB_OUTPUT
+            echo "⚠ package-lock.json not found - will use npm install (non-deterministic)"
+          fi
+
+      - name: Install dependencies (deterministic)
+        if: steps.check-lockfile.outputs.lockfile_exists == 'true'
+        run: npm ci
+
+      - name: Install dependencies (fallback)
+        if: steps.check-lockfile.outputs.lockfile_exists == 'false'
+        run: npm install
+
+      - name: Build Next.js site
+        run: |
+          echo "Building Next.js static export..."
+          npm run build
+          echo "✓ Build completed successfully"
+
+      - name: Verify output directory
+        run: |
+          if [ ! -d "./out" ]; then
+            echo "❌ Error: ./out directory not found after build"
+            echo "The build may have failed or output configuration is incorrect"
+            exit 1
+          fi
+          echo "✓ Output directory ./out verified"
+          
+      - name: Run tests (if available)
+        run: |
+          if grep -q '"test"' package.json; then
+            echo "Running tests..."
+            npm run test
+          else
+            echo "No test script found in package.json, skipping tests"
+          fi
+        continue-on-error: false
