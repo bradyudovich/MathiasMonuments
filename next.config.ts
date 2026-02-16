@@ -25,10 +25,11 @@ function getGitHubPagesConfig() {
   
   const [owner, repoName] = parts
   
-  // Check if this is a user/org pages repo (e.g., bradyudovich.github.io)
-  const isUserPagesRepo = repoName === `${owner}.github.io`
+  // Check if this is a user/org pages repo (ends with .github.io)
+  // These are served at the root path, so no basePath is needed
+  const isUserPagesRepo = repoName.endsWith('.github.io')
   
-  if (!isUserPagesRepo && repoName) {
+  if (!isUserPagesRepo) {
     const basePath = `/${repoName}`
     console.log(`🔧 Detected GitHub Pages subpath deployment`)
     console.log(`   Repository: ${repo}`)
