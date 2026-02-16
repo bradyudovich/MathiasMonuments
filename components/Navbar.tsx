@@ -2,7 +2,7 @@ import React from "react";
 
 export function Navbar() {
   return (
-    <header className="bg-slate-900">
+    <header className="bg-slate-900 sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" className="font-serif text-white text-lg leading-none">
           Mathias Monuments & Memorials
@@ -10,11 +10,11 @@ export function Navbar() {
 
         <div>
           <a
-            href="tel:410-848-4600"
-            className="text-amber-400 hover:underline font-medium"
-            aria-label="Call Mathias Monuments at 410-848-4600"
+            href="#contact"
+            className="contact-btn inline-block px-6 py-2.5 bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            aria-label="Contact Us - Go to contact form"
           >
-            410-848-4600
+            Contact Us
           </a>
         </div>
       </div>

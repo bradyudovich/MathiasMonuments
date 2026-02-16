@@ -2,7 +2,6 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import PlaceholderImage from './PlaceholderImage'
 
 export default function InteractiveHero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -17,6 +16,15 @@ export default function InteractiveHero() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
+        <motion.p
+          className="hero-trust-badge"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+        >
+          Serving Families Since 1906
+        </motion.p>
+
         <motion.p
           className="hero-kicker"
           initial={{ opacity: 0 }}
@@ -74,10 +82,23 @@ export default function InteractiveHero() {
           className="hero-parallax"
           style={{ y: parallaxY }}
         >
-          <PlaceholderImage 
-            aspect="video" 
-            ariaLabel="Premium granite monument showcasing our craftsmanship" 
-          />
+          <motion.div 
+            className="hero-text-box"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-amber-400 mb-4">
+              Since 1906: A Legacy of Excellence
+            </h2>
+            <p className="text-slate-200 text-lg leading-relaxed">
+              For over a century, Mathias Monuments has been a pillar of craftsmanship and 
+              compassion in the monument industry. Founded in 1906, our family-owned business 
+              has passed down the art of memorial creation through four generations. We combine 
+              time-honored techniques with modern innovation to create lasting tributes that 
+              honor the memories of loved ones across Maryland, Pennsylvania, and Virginia.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </div>

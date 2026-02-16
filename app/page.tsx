@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+import NavbarWrapper from '@/components/NavbarWrapper'
 import InteractiveHero from '@/components/InteractiveHero'
 import BentoLegacyGrid from '@/components/BentoLegacyGrid'
 import DynamicInventory from '@/components/DynamicInventory'
@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 export default function HomePage() {
   return (
     <main>
-      <Navbar />
+      <NavbarWrapper />
       <InteractiveHero />
       
       <section className="lead-intro">
