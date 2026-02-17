@@ -47,7 +47,7 @@
     <header role="banner">
         <nav role="navigation">
             <div class="container navbar-content">
-                <h1 class="navbar-slogan">Mathias Monuments &amp; Memorials</h1>
+                <div class="navbar-slogan">Mathias Monuments &amp; Memorials</div>
                 <a href="#contact" class="contact-btn smooth-scroll" aria-label="Contact Us - Go to contact form">Contact Us</a>
             </div>
         </nav>
@@ -232,7 +232,7 @@
                 
                 <!-- Request a Quote Form -->
                 <!-- Note: This form is visual-only. To enable backend submission, update the action attribute with your form endpoint -->
-                <form class="contact-form" id="quote-form">
+                <form class="contact-form" id="quote-form" onsubmit="handleQuoteFormSubmit(event)">
                     <h3>Request a Quote</h3>
                     <div class="form-group">
                         <label for="name">Name <span aria-label="required">*</span></label>

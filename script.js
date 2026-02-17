@@ -45,3 +45,21 @@ window.addEventListener('scroll', function() {
         }
     }
 });
+
+// Handle quote form submission
+function handleQuoteFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const name = form.querySelector('#name').value;
+    const email = form.querySelector('#email').value;
+    const message = form.querySelector('#message').value;
+    
+    // For demonstration purposes, show an alert
+    // TODO: Replace this with actual backend API call when ready
+    // Example: fetch('/api/quote', { method: 'POST', body: JSON.stringify({ name, email, message }) })
+    alert(`Thank you, ${name}! Your quote request has been received. We'll get back to you at ${email} soon.`);
+    
+    // Reset the form
+    form.reset();
+}
