@@ -40,10 +40,11 @@ export default function InteractiveHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          For over a century, Mathias Monuments has been a pillar of craftsmanship and 
-          compassion in the monument industry. Founded in Westminster, Maryland, our 
-          family-owned business has passed down the art of memorial creation through four 
-          generations across Maryland, Pennsylvania, and Virginia.
+          Founded in 1906 in Westminster, Maryland, Mathias Monuments has been a pillar of 
+          craftsmanship and compassion in the monument industry. Under the visionary leadership 
+          of Joseph L. Mathias, who served as Mayor of Westminster from 1942 to 1963, our 
+          family-owned business pioneered the transition from traditional marble to premium 
+          high-density granite—serving four generations across Maryland, Pennsylvania, and Virginia.
         </motion.p>
 
         <motion.p
@@ -52,9 +53,9 @@ export default function InteractiveHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          We combine time-honored techniques with modern innovation, pioneering the transition 
-          from traditional marble to premium high-density granite. Trusted cemetery bylaw experts 
-          with unmatched expertise in design, installation, and restoration.
+          Today, from our home at 175 E. Main Street, Westminster, MD, we continue this proud 
+          tradition as trusted cemetery bylaw experts with unmatched expertise in design, 
+          installation, and restoration.
         </motion.p>
         
         <motion.a
