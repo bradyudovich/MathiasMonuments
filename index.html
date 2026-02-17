@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Family-owned monument craftsmanship serving Maryland, Pennsylvania, and Virginia since 1906. Expert custom granite memorials, cemetery bylaw expertise, and restoration services. Located in Westminster, MD.">
     <title>Mathias Monuments | Custom Memorials in Westminster, MD</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts - Cinzel and Playfair Display for serif headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,122 +44,171 @@
     </script>
 </head>
 <body>
-    <header>
-        <nav>
+    <header role="banner">
+        <nav role="navigation">
             <div class="container navbar-content">
-                <h1 class="navbar-slogan">Mathias Monuments & Memorials</h1>
-                <a href="#contact" class="contact-btn" aria-label="Contact Us - Go to contact form">Contact Us</a>
+                <div class="navbar-slogan">Mathias Monuments &amp; Memorials</div>
+                <a href="#contact" class="contact-btn smooth-scroll" aria-label="Contact Us - Go to contact form">Contact Us</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main role="main">
+        <!-- Split-Screen Hero Section -->
         <section id="home" class="hero">
-            <div class="container">
-                <p class="hero-trust-badge">Serving Families Since 1906</p>
-                <h2>Preserving Legacy Through Stone</h2>
-                <p>Creating timeless monuments and memorials that honor your loved ones</p>
-                <a href="#contact" class="cta-button">Request a Design Guide</a>
-            </div>
-            <div class="hero-text-section">
-                <h3>Since 1906: A Legacy of Excellence</h3>
-                <p>For over a century, Mathias Monuments has been a pillar of craftsmanship and compassion in the monument industry. Founded in 1906, our family-owned business has passed down the art of memorial creation through four generations.</p>
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <h1>Honoring Legacies in Westminster Since 1906</h1>
+                    <p class="hero-description">A memorial is more than a marker; it is a commemorative focal point for family and friends to visit for generations. Since 1906, our goal has been to provide a personalized tribute that serves as a lasting anchor for your loved one's final resting spot.</p>
+                    <p class="hero-about">Mathias Monuments has been serving families with dignity and care for generations. We specialize in crafting beautiful, lasting memorials that celebrate the lives of those we've lost. Our skilled artisans combine traditional craftsmanship with modern techniques to create monuments that stand the test of time.</p>
+                </div>
+                <div class="hero-right"></div>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <!-- Five Pillars Section -->
+        <section id="pillars" class="five-pillars">
             <div class="container">
-                <h2>About Us</h2>
-                <p>Mathias Monuments has been serving families with dignity and care for generations. We specialize in crafting beautiful, lasting memorials that celebrate the lives of those we've lost.</p>
-                <p>Our skilled artisans combine traditional craftsmanship with modern techniques to create monuments that stand the test of time.</p>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>Custom Monuments</h3>
-                        <p>Personalized designs tailored to honor your loved one's unique story</p>
+                <div class="pillars-grid">
+                    <div class="pillar">
+                        <h3>Custom Design</h3>
+                        <p>From favorite Bible passages to custom hobby icons, we design every stone in-house to your exact specifications.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="pillar">
+                        <h3>Transparent Value</h3>
+                        <p>We work directly with families. Because our team is not commission-based, we provide the highest quality craftsmanship at the most competitive value.</p>
+                    </div>
+                    <div class="pillar">
+                        <h3>Expert Guidance</h3>
+                        <p>We handle the technical details—from cemetery size restrictions to installation methods—so you can focus on the tribute itself.</p>
+                    </div>
+                    <div class="pillar">
                         <h3>Monument Restoration</h3>
-                        <p>Expert restoration services to preserve existing monuments</p>
+                        <p>Expert restoration services to preserve existing monuments and bring them back to their original beauty.</p>
                     </div>
-                    <div class="service-card">
-                        <h3>Memorial Plaques</h3>
-                        <p>Beautifully crafted plaques for benches, buildings, and more</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Engraving Services</h3>
-                        <p>Professional engraving with attention to detail and care</p>
+                    <div class="pillar">
+                        <h3>Professional Engraving</h3>
+                        <p>Meticulous engraving with attention to detail, ensuring every letter and design element is perfectly crafted.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <!-- Interactive Gallery Section -->
+        <section id="gallery" class="gallery-section">
             <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Visit Us</h3>
-                        <address>
-                            175 E. Main Street<br>
-                            Westminster, MD 21157
-                        </address>
-                        <p><a href="tel:410-848-4600" class="contact-phone">410-848-4600</a></p>
-                        <p><a href="mailto:info@mathiasmemorials.com" class="contact-email">info@mathiasmemorials.com</a></p>
+                <h2>Our Work</h2>
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="upright">Upright Monuments</button>
+                    <button class="filter-btn" data-filter="slant">Slant & Bevel Markers</button>
+                    <button class="filter-btn" data-filter="bronze">Bronze Plaques</button>
+                </div>
+                <div class="gallery-grid">
+                    <!-- Upright Monuments -->
+                    <div class="gallery-item" data-category="upright">
+                        <img src="assets/images/gallery/upright-1.jpg" alt="Elegant upright monument with custom engraving" loading="lazy">
+                        <p class="gallery-caption">Custom Upright Monument</p>
                     </div>
-                    <div class="contact-hours">
-                        <h3>Hours</h3>
+                    <div class="gallery-item" data-category="upright">
+                        <img src="assets/images/gallery/upright-2.jpg" alt="Traditional upright memorial stone" loading="lazy">
+                        <p class="gallery-caption">Traditional Upright Memorial</p>
+                    </div>
+                    <!-- Slant Markers -->
+                    <div class="gallery-item" data-category="slant">
+                        <img src="assets/images/gallery/slant-1.jpg" alt="Polished slant marker with inscription" loading="lazy">
+                        <p class="gallery-caption">Polished Slant Marker</p>
+                    </div>
+                    <div class="gallery-item" data-category="slant">
+                        <img src="assets/images/gallery/slant-2.jpg" alt="Custom slant memorial with design" loading="lazy">
+                        <p class="gallery-caption">Custom Slant Memorial</p>
+                    </div>
+                    <!-- Bronze Plaques -->
+                    <div class="gallery-item" data-category="bronze">
+                        <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
+                        <p class="gallery-caption">Bronze Memorial Plaque</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Visit Us Section -->
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <div class="footer-hours">
+                        <h4>Hours of Operation</h4>
                         <ul>
-                            <li>M: 9:00–17:00</li>
-                            <li>T: 9:00–17:00</li>
-                            <li>W: 9:00–17:00</li>
-                            <li>Th: 9:00–17:00</li>
-                            <li>F: 9:00–16:00</li>
+                            <li>M: 9:00 AM – 5:00 PM</li>
+                            <li>T: 9:00 AM – 5:00 PM</li>
+                            <li>W: 9:00 AM – 5:00 PM</li>
+                            <li>Th: 9:00 AM – 5:00 PM</li>
+                            <li>F: 9:00 AM – 5:00 PM</li>
+                            <li>Sat – Sun: Closed (By Appointment)</li>
                         </ul>
                     </div>
-                    <div class="contact-map">
+                    <div class="footer-location">
+                        <h4>Location</h4>
+                        <address>
+                            <a href="https://www.google.com/maps/search/?api=1&query=175+E+Main+Street+Westminster+MD+21157" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="footer-address-link">
+                                175 E. Main Street<br>
+                                Westminster, MD 21157
+                            </a>
+                        </address>
+                        <p><a href="tel:410-848-4600" class="footer-phone">410-848-4600</a></p>
+                    </div>
+                </div>
+
+                <!-- Contact Us Section -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><a href="mailto:info@mathiasmemorials.com" class="footer-email">info@mathiasmemorials.com</a></p>
+                    
+                    <!-- Google Map -->
+                    <div class="footer-map">
                         <iframe
-                            title="Mathias Monuments Map"
-                            src="https://www.google.com/maps?q=175%20E.%20Main%20Street%2C%20Westminster%2C%20MD%2021157&output=embed"
+                            title="Mathias Monuments Map - Westminster, MD"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.8!2d-76.9958!3d39.5747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDM0JzI5LjAiTiA3NsKwNTknNDQuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
                             width="100%"
-                            height="300"
+                            height="200"
                             style="border:0"
+                            allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                 </div>
-                
-                <form class="contact-form" action="https://formspree.io/f/yourFormId" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
+                <!-- Request a Quote Section -->
+                <div class="footer-section footer-quote">
+                    <h3>Request a Quote</h3>
+                    <form class="footer-form" id="quote-form" onsubmit="handleQuoteFormSubmit(event)">
+                        <div class="form-group-compact">
+                            <label for="name">Name <span aria-label="required">*</span></label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="form-group-compact">
+                            <label for="email">Email <span aria-label="required">*</span></label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <button type="submit" class="footer-submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/js/gallery.js"></script>
 </body>
 </html>
