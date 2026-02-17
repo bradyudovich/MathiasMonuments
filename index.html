@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Family-owned monument craftsmanship serving Maryland, Pennsylvania, and Virginia since 1906. Expert custom granite memorials, cemetery bylaw expertise, and restoration services. Located in Westminster, MD.">
     <title>Mathias Monuments | Custom Memorials in Westminster, MD</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts - Playfair Display for serif headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,29 +44,107 @@
     </script>
 </head>
 <body>
-    <header>
-        <nav>
+    <header role="banner">
+        <nav role="navigation">
             <div class="container navbar-content">
-                <h1 class="navbar-slogan">Mathias Monuments & Memorials</h1>
-                <a href="#contact" class="contact-btn" aria-label="Contact Us - Go to contact form">Contact Us</a>
+                <h1 class="navbar-slogan">Mathias Monuments &amp; Memorials</h1>
+                <a href="#contact" class="contact-btn smooth-scroll" aria-label="Contact Us - Go to contact form">Contact Us</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main role="main">
+        <!-- Hero Section with Two-Column Layout -->
         <section id="home" class="hero">
-            <div class="container">
-                <p class="hero-trust-badge">Serving Families Since 1906</p>
-                <h2>Preserving Legacy Through Stone</h2>
-                <p>Creating timeless monuments and memorials that honor your loved ones</p>
-                <a href="#contact" class="cta-button">Request a Design Guide</a>
-            </div>
-            <div class="hero-text-section">
-                <h3>Since 1906: A Legacy of Excellence</h3>
-                <p>For over a century, Mathias Monuments has been a pillar of craftsmanship and compassion in the monument industry. Founded in 1906, our family-owned business has passed down the art of memorial creation through four generations.</p>
+            <div class="container hero-container">
+                <div class="hero-image">
+                    <img src="assets/images/hero-placeholder.jpg" alt="Custom granite memorial monument" loading="eager">
+                </div>
+                <div class="hero-content">
+                    <h1>Honoring Legacies Since 1906.</h1>
+                    <p class="hero-subheadline">Custom granite memorials and compassionate service in Westminster, MD.</p>
+                </div>
             </div>
         </section>
 
+        <!-- Three Pillars Section -->
+        <section id="pillars" class="three-pillars">
+            <div class="container">
+                <div class="pillars-grid">
+                    <div class="pillar">
+                        <div class="pillar-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="28" stroke="#0B2545" stroke-width="2" fill="none"/>
+                                <path d="M30 15 L40 25 L35 25 L35 45 L25 45 L25 25 L20 25 Z" fill="#0B2545"/>
+                            </svg>
+                        </div>
+                        <h3>Custom Design</h3>
+                        <p>Hand-crafted monuments tailored to your family's story.</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="28" stroke="#0B2545" stroke-width="2" fill="none"/>
+                                <rect x="20" y="20" width="20" height="20" fill="#0B2545"/>
+                            </svg>
+                        </div>
+                        <h3>Quality Granite</h3>
+                        <p>Selection of the finest materials built to last centuries.</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon" aria-hidden="true">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="28" stroke="#0B2545" stroke-width="2" fill="none"/>
+                                <path d="M30 15 L35 25 L30 35 L25 25 Z" fill="#0B2545"/>
+                                <circle cx="30" cy="42" r="3" fill="#0B2545"/>
+                            </svg>
+                        </div>
+                        <h3>Local Heritage</h3>
+                        <p>A Westminster fixture for over 120 years.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2>Our Work</h2>
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="upright">Upright Monuments</button>
+                    <button class="filter-btn" data-filter="slant">Slant Markers</button>
+                    <button class="filter-btn" data-filter="bronze">Bronze Plaques</button>
+                </div>
+                <div class="gallery-grid">
+                    <!-- Upright Monuments -->
+                    <div class="gallery-item" data-category="upright">
+                        <img src="assets/images/gallery/upright-1.jpg" alt="Elegant upright monument with custom engraving" loading="lazy">
+                        <p class="gallery-caption">Custom Upright Monument</p>
+                    </div>
+                    <div class="gallery-item" data-category="upright">
+                        <img src="assets/images/gallery/upright-2.jpg" alt="Traditional upright memorial stone" loading="lazy">
+                        <p class="gallery-caption">Traditional Upright Memorial</p>
+                    </div>
+                    <!-- Slant Markers -->
+                    <div class="gallery-item" data-category="slant">
+                        <img src="assets/images/gallery/slant-1.jpg" alt="Polished slant marker with inscription" loading="lazy">
+                        <p class="gallery-caption">Polished Slant Marker</p>
+                    </div>
+                    <div class="gallery-item" data-category="slant">
+                        <img src="assets/images/gallery/slant-2.jpg" alt="Custom slant memorial with design" loading="lazy">
+                        <p class="gallery-caption">Custom Slant Memorial</p>
+                    </div>
+                    <!-- Bronze Plaques -->
+                    <div class="gallery-item" data-category="bronze">
+                        <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
+                        <p class="gallery-caption">Bronze Memorial Plaque</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section (keeping existing) -->
         <section id="about" class="about">
             <div class="container">
                 <h2>About Us</h2>
@@ -71,6 +153,7 @@
             </div>
         </section>
 
+        <!-- Services Section (keeping existing) -->
         <section id="services" class="services">
             <div class="container">
                 <h2>Our Services</h2>
@@ -95,54 +178,73 @@
             </div>
         </section>
 
+        <!-- Logistics Section -->
+        <section id="logistics" class="logistics">
+            <div class="container">
+                <h2>Visit Us</h2>
+                <div class="logistics-grid">
+                    <div class="logistics-hours">
+                        <h3>Hours of Operation</h3>
+                        <ul>
+                            <li>M – F: 9:00 AM – 5:00 PM</li>
+                            <li>Sat – Sun: By Appointment</li>
+                        </ul>
+                    </div>
+                    <div class="logistics-location">
+                        <h3>Location</h3>
+                        <address>
+                            <a href="https://www.google.com/maps/search/?api=1&query=175+E+Main+Street+Westminster+MD+21157" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="address-link">
+                                175 E. Main Street<br>
+                                Westminster, MD 21157
+                            </a>
+                        </address>
+                        <p><a href="tel:410-848-4600" class="contact-phone">410-848-4600</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Us</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3>Visit Us</h3>
-                        <address>
-                            175 E. Main Street<br>
-                            Westminster, MD 21157
-                        </address>
-                        <p><a href="tel:410-848-4600" class="contact-phone">410-848-4600</a></p>
+                        <h3>Get in Touch</h3>
                         <p><a href="mailto:info@mathiasmemorials.com" class="contact-email">info@mathiasmemorials.com</a></p>
-                    </div>
-                    <div class="contact-hours">
-                        <h3>Hours</h3>
-                        <ul>
-                            <li>M: 9:00–17:00</li>
-                            <li>T: 9:00–17:00</li>
-                            <li>W: 9:00–17:00</li>
-                            <li>Th: 9:00–17:00</li>
-                            <li>F: 9:00–16:00</li>
-                        </ul>
                     </div>
                     <div class="contact-map">
                         <iframe
-                            title="Mathias Monuments Map"
-                            src="https://www.google.com/maps?q=175%20E.%20Main%20Street%2C%20Westminster%2C%20MD%2021157&output=embed"
+                            title="Mathias Monuments Map - Westminster, MD"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.8!2d-76.9958!3d39.5747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDM0JzI5LjAiTiA3NsKwNTknNDQuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
                             width="100%"
                             height="300"
                             style="border:0"
+                            allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                 </div>
                 
-                <form class="contact-form" action="https://formspree.io/f/yourFormId" method="POST">
+                <!-- Request a Quote Form -->
+                <!-- Note: This form is visual-only. To enable backend submission, update the action attribute with your form endpoint -->
+                <form class="contact-form" id="quote-form">
+                    <h3>Request a Quote</h3>
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Name <span aria-label="required">*</span></label>
+                        <input type="text" id="name" name="name" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email <span aria-label="required">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Message <span aria-label="required">*</span></label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
                     </div>
                     <button type="submit" class="submit-button">Send Message</button>
                 </form>
@@ -150,12 +252,13 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/js/gallery.js"></script>
 </body>
 </html>

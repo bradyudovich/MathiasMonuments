@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradupright-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#gradupright-1)"/>
+  <text x="400" y="280" font-family="serif" font-size="48" fill="#C5A059" text-anchor="middle" font-weight="600">Upright Monument</title>
+  <text x="400" y="340" font-family="sans-serif" font-size="24" fill="#F8FAFC" text-anchor="middle" opacity="0.8">Premium Granite</text>
+  <rect x="250" y="380" width="300" height="160" fill="#0F172A" opacity="0.4" rx="8"/>
+  <text x="400" y="430" font-family="sans-serif" font-size="18" fill="#C5A059" text-anchor="middle">Mathias Monuments</text>
+  <text x="400" y="460" font-family="sans-serif" font-size="16" fill="#F8FAFC" text-anchor="middle" opacity="0.7">Since 1906</text>
+</svg>
