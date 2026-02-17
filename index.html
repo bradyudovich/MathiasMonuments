@@ -177,14 +177,16 @@
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Logistics Section -->
-        <section id="logistics" class="logistics">
-            <div class="container">
-                <h2>Visit Us</h2>
-                <div class="logistics-grid">
-                    <div class="logistics-hours">
-                        <h3>Hours of Operation</h3>
+    <footer role="contentinfo" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Visit Us Section -->
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <div class="footer-hours">
+                        <h4>Hours of Operation</h4>
                         <ul>
                             <li>M: 9:00 AM – 5:00 PM</li>
                             <li>T: 9:00 AM – 5:00 PM</li>
@@ -194,38 +196,33 @@
                             <li>Sat – Sun: Closed (By Appointment)</li>
                         </ul>
                     </div>
-                    <div class="logistics-location">
-                        <h3>Location</h3>
+                    <div class="footer-location">
+                        <h4>Location</h4>
                         <address>
                             <a href="https://www.google.com/maps/search/?api=1&query=175+E+Main+Street+Westminster+MD+21157" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="address-link">
+                               class="footer-address-link">
                                 175 E. Main Street<br>
                                 Westminster, MD 21157
                             </a>
                         </address>
-                        <p><a href="tel:410-848-4600" class="contact-phone">410-848-4600</a></p>
+                        <p><a href="tel:410-848-4600" class="footer-phone">410-848-4600</a></p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Get in Touch</h3>
-                        <p><a href="mailto:info@mathiasmemorials.com" class="contact-email">info@mathiasmemorials.com</a></p>
-                    </div>
-                    <div class="contact-map">
+                <!-- Contact Us Section -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><a href="mailto:info@mathiasmemorials.com" class="footer-email">info@mathiasmemorials.com</a></p>
+                    
+                    <!-- Google Map -->
+                    <div class="footer-map">
                         <iframe
                             title="Mathias Monuments Map - Westminster, MD"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.8!2d-76.9958!3d39.5747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDM0JzI5LjAiTiA3NsKwNTknNDQuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
                             width="100%"
-                            height="300"
+                            height="200"
                             style="border:0"
                             allowfullscreen=""
                             loading="lazy"
@@ -233,32 +230,31 @@
                         </iframe>
                     </div>
                 </div>
-                
-                <!-- Request a Quote Form -->
-                <!-- Note: This form is visual-only. To enable backend submission, update the action attribute with your form endpoint -->
-                <form class="contact-form" id="quote-form" onsubmit="handleQuoteFormSubmit(event)">
-                    <h3>Request a Quote</h3>
-                    <div class="form-group">
-                        <label for="name">Name <span aria-label="required">*</span></label>
-                        <input type="text" id="name" name="name" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email <span aria-label="required">*</span></label>
-                        <input type="email" id="email" name="email" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message <span aria-label="required">*</span></label>
-                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
 
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
+                <!-- Request a Quote Section -->
+                <div class="footer-section footer-quote">
+                    <h3>Request a Quote</h3>
+                    <form class="footer-form" id="quote-form" onsubmit="handleQuoteFormSubmit(event)">
+                        <div class="form-group-compact">
+                            <label for="name">Name <span aria-label="required">*</span></label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="form-group-compact">
+                            <label for="email">Email <span aria-label="required">*</span></label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group-compact">
+                            <label for="message">Message <span aria-label="required">*</span></label>
+                            <textarea id="message" name="message" rows="3" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" class="footer-submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
