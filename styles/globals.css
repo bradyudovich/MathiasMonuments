@@ -87,7 +87,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem;
+  padding: 3rem;
   background-color: var(--deep-onyx);
   color: var(--slate-50);
 }
@@ -111,7 +111,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 3rem;
 }
 
 .hero-text-box {
