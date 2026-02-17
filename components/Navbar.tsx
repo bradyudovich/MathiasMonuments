@@ -11,10 +11,11 @@ export function Navbar() {
         <div>
           <a
             href="#contact"
-            className="contact-btn inline-block px-4 py-2 text-sm md:px-6 md:py-2.5 md:text-base bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="contact-btn inline-block px-3 py-1.5 text-xs md:px-6 md:py-2.5 md:text-base bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
             aria-label="Contact Us - Go to contact form"
           >
-            Contact Us
+            <span className="md:hidden">Contact</span>
+            <span className="hidden md:inline">Contact Us</span>
           </a>
         </div>
       </div>
