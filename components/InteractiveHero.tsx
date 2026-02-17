@@ -24,44 +24,26 @@ export default function InteractiveHero() {
         >
           Serving Families Since 1906
         </motion.p>
-
-        <motion.p
-          className="hero-kicker"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          Since 1906
-        </motion.p>
         
         <motion.h1
           className="hero-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
         >
-          Preserving Legacy Through Stone
+          A Legacy of Excellence
         </motion.h1>
         
         <motion.p
           className="hero-paragraph"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
         >
           Four generations of craftsmanship serving Maryland, Pennsylvania, and Virginia. 
-          From marble to high-density granite, we create monuments that honor life's most 
-          cherished memories.
-        </motion.p>
-
-        <motion.p
-          className="hero-paragraph"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          Trusted cemetery bylaw experts with unmatched expertise in design, installation, 
-          and restoration.
+          From traditional marble to premium high-density granite, we create lasting monuments 
+          that honor life's most cherished memories with unmatched expertise in design, 
+          installation, and restoration.
         </motion.p>
         
         <motion.a
@@ -69,7 +51,7 @@ export default function InteractiveHero() {
           className="hero-cta"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -82,23 +64,6 @@ export default function InteractiveHero() {
           className="hero-parallax"
           style={{ y: parallaxY }}
         >
-          <motion.div 
-            className="hero-text-box"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-amber-400 mb-4">
-              Since 1906: A Legacy of Excellence
-            </h2>
-            <p className="text-slate-200 text-lg leading-relaxed">
-              For over a century, Mathias Monuments has been a pillar of craftsmanship and 
-              compassion in the monument industry. Founded in 1906, our family-owned business 
-              has passed down the art of memorial creation through four generations. We combine 
-              time-honored techniques with modern innovation to create lasting tributes that 
-              honor the memories of loved ones across Maryland, Pennsylvania, and Virginia.
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </div>
