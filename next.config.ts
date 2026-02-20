@@ -46,6 +46,8 @@ function getGitHubPagesConfig() {
   return {}
 }
 
+const ghPagesConfig = getGitHubPagesConfig()
+
 const nextConfig: NextConfig = {
   // Force static export for GitHub Pages
   output: 'export',
@@ -61,8 +63,13 @@ const nextConfig: NextConfig = {
   // Enable React strict mode
   reactStrictMode: true,
   
+  // Expose base path to client components for constructing static asset URLs
+  env: {
+    NEXT_PUBLIC_BASE_PATH: (ghPagesConfig as { basePath?: string }).basePath || '',
+  },
+  
   // Apply GitHub Pages configuration if detected
-  ...getGitHubPagesConfig(),
+  ...ghPagesConfig,
 }
 
 export default nextConfig
