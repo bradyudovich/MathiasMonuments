@@ -11,7 +11,7 @@ export function Navbar() {
         <div>
           <a
             href="#contact"
-            className="contact-btn inline-block px-3 py-1.5 text-xs md:px-6 md:py-2.5 md:text-base bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="contact-btn whitespace-nowrap inline-block px-3 py-1.5 text-xs md:px-6 md:py-2.5 md:text-base bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
             aria-label="Contact Us - Go to contact form"
           >
             <span className="md:hidden">Contact</span>

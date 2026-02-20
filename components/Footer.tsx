@@ -48,15 +48,18 @@ export function Footer() {
 
   return (
     <footer id="contact" className="bg-slate-950 text-slate-200">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {/* Column 1: Contact Info */}
+      <div className="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Column 1: Hours of Operation + Contact Us */}
         <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Hours of Operation</h3>
+          <ul className="space-y-1 mb-6">
+            <li>M – Th: 9:00 AM – 5:00 PM</li>
+            <li>F: 9:00 AM – 4:00 PM</li>
+            <li>Sat – Sun: Closed (By Appointment)</li>
+          </ul>
+
           <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
           <address className="not-italic space-y-2">
-            <p className="text-slate-300">
-              175 E. Main Street<br />
-              Westminster, MD 21157
-            </p>
             <p>
               <a href="tel:410-848-4600" className="text-amber-400 hover:underline" aria-label="Call Mathias Monuments">
                 410-848-4600
@@ -70,21 +73,19 @@ export function Footer() {
           </address>
         </div>
 
-        {/* Column 2: Hours */}
+        {/* Column 2: Map with address */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Hours</h3>
-          <ul className="space-y-1">
-            <li>M: 9:00–17:00</li>
-            <li>T: 9:00–17:00</li>
-            <li>W: 9:00–17:00</li>
-            <li>Th: 9:00–17:00</li>
-            <li>F: 9:00–16:00</li>
-          </ul>
-        </div>
-
-        {/* Column 3: Map */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Map</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">Location</h3>
+          <a
+            href="https://www.google.com/maps?q=175+E.+Main+Street,+Westminster,+MD+21157"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-amber-400 hover:underline mb-3"
+            aria-label="View Mathias Monuments on Google Maps"
+          >
+            175 E. Main Street<br />
+            Westminster, MD 21157
+          </a>
           <div className="w-full h-48 border border-slate-800 overflow-hidden rounded">
             <iframe
               title="Mathias Monuments Map"
@@ -98,7 +99,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Column 4: Contact Form */}
+        {/* Column 3: Contact Form */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Send a Message</h3>
           <form onSubmit={handleSubmit} className="space-y-3">

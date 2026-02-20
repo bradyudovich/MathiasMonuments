@@ -1,7 +1,7 @@
 import NavbarWrapper from '@/components/NavbarWrapper'
 import InteractiveHero from '@/components/InteractiveHero'
 import BentoLegacyGrid from '@/components/BentoLegacyGrid'
-import DynamicInventory from '@/components/DynamicInventory'
+import OurWork from '@/components/OurWork'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
 
       <BentoLegacyGrid />
 
-      <DynamicInventory />
+      <OurWork />
 
       <Footer />
     </main>

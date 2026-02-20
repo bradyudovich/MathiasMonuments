@@ -23,35 +23,48 @@ export default function BentoLegacyGrid() {
 
   return (
     <div ref={ref} className="bento-grid">
-      <motion.div 
+      <motion.div
         className="bento-tile"
         custom={0}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={tileVariants}
       >
-        <h3>120 Years of History</h3>
-        <p>
-          Since 1906, the Mathias family has been crafting monuments that stand the test of time. 
-          Under the leadership of Joseph L. Mathias, who served as Mayor of Westminster from 1942 to 1963, 
-          we pioneered the transition from traditional marble to premium high-density granite—setting 
-          new standards in durability and design excellence.
-        </p>
+        <h3>Bespoke Design & Engraving</h3>
+        <p>Tailored artistry featuring custom hobby icons, religious symbols, and professional engraving.</p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="bento-tile"
         custom={1}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={tileVariants}
       >
-        <h3>Cemetery Bylaw Experts</h3>
-        <p>
-          Navigating cemetery regulations can be complex. Our team possesses deep expertise in 
-          local and regional cemetery bylaws across Maryland, Pennsylvania, and Virginia—ensuring 
-          every installation meets specifications and honors your wishes without complications.
-        </p>
+        <h3>Heritage & Legacy</h3>
+        <p>Serving families with dignity since 1906. A Westminster fixture built on craftsmanship.</p>
+      </motion.div>
+
+      <motion.div
+        className="bento-tile"
+        custom={2}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={tileVariants}
+      >
+        <h3>Transparent Value</h3>
+        <p>Direct-to-family pricing with no sales commissions, ensuring the highest quality at the best value.</p>
+      </motion.div>
+
+      <motion.div
+        className="bento-tile"
+        custom={3}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={tileVariants}
+      >
+        <h3>Restoration & Guidance</h3>
+        <p>Expert monument restoration and full navigation of cemetery size and installation regulations.</p>
       </motion.div>
     </div>
   )
