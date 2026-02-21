@@ -3,207 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Westminster Custom Headstones & Memorials by Mathias Monuments — family-owned since 1906. Expert custom granite monuments, cemetery bylaw expertise, and restoration services in Westminster, MD.">
-    <title>Mathias Monuments | Westminster Custom Headstones & Memorials</title>
-    <!-- Google Fonts - Cinzel and Playfair Display for serif headings -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Mathias Monuments</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Mathias Monuments & Memorials",
-      "telephone": "+1-443-244-2077",
-      "email": "bradyudovich@icloud.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "175 E. Main Street",
-        "addressLocality": "Westminster",
-        "addressRegion": "MD",
-        "postalCode": "21157",
-        "addressCountry": "US"
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "09:00",
-          "closes": "16:00"
-        }
-      ],
-      "url": "https://mathiasmemorials.com"
-    }
-    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header role="banner">
-        <nav role="navigation">
-            <div class="container navbar-content">
-                <div class="navbar-slogan">Mathias Monuments &amp; Memorials</div>
-                <a href="#home" class="contact-btn smooth-scroll" aria-label="Claim your $100 memorial credit">Get My Credit</a>
-            </div>
-        </nav>
+    <header>
+        <button id="cta-button">$100 Memorial Credit</button>
     </header>
-
-    <main role="main">
-        <!-- Conversion Card — Lead Magnet (replaces hero) -->
-        <section id="home" class="conversion-card-section">
-            <div class="container">
-                <div id="lead-form-container" class="conversion-card">
-                    <h1 class="conversion-headline">Claim Your $100 Memorial Credit</h1>
-                    <p class="conversion-subheadline">Supporting Westminster families with hand-crafted, lasting tributes. Claim your credit today to be applied toward any custom monument.</p>
-                    <form class="lead-form" id="lead-form" onsubmit="handleLeadCaptureSubmit(event)">
-                        <div class="lead-form-group">
-                            <label for="lead-name">Name <span aria-label="required">*</span></label>
-                            <input type="text" id="lead-name" name="name" required aria-required="true" placeholder="Your full name">
-                        </div>
-                        <div class="lead-form-group">
-                            <label for="lead-email">Email <span aria-label="required">*</span></label>
-                            <input type="email" id="lead-email" name="email" required aria-required="true" placeholder="your@email.com">
-                        </div>
-                        <!-- Hidden tracking field - populated from ?ref= URL parameter, defaults to "brady" -->
-                        <input type="hidden" id="lead-ref" name="ref" value="brady">
-                        <button type="submit" class="lead-submit-btn">Send My Credit Code</button>
-                    </form>
-                </div>
-                <div id="lead-thankyou" class="conversion-card lead-thankyou" style="display:none" aria-live="polite">
-                    <div class="lead-thankyou-icon" aria-hidden="true">&#10003;</div>
-                    <h2>Your Credit Has Been Reserved</h2>
-                    <p>Thank you, <span class="lead-name-display"></span>. A copy has been sent to your email.</p>
-                    <div class="coupon-code">BRADY100</div>
-                    <p class="coupon-instruction">Present this code when you visit or call us to apply your $100 memorial credit.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Horizontal Scroll Gallery — Visual Proof directly below Conversion Card -->
-        <section id="gallery" class="gallery-section">
-            <div class="container">
-                <h2>Our Work</h2>
-                <div class="gallery-scroll">
-                    <!-- Upright Monuments -->
-                    <div class="gallery-scroll-item">
-                        <img src="assets/images/gallery/upright-1.jpg" alt="Elegant upright monument with custom engraving" loading="lazy">
-                        <p class="gallery-caption">Custom Upright Monument</p>
-                    </div>
-                    <div class="gallery-scroll-item">
-                        <img src="assets/images/gallery/upright-2.jpg" alt="Traditional upright memorial stone" loading="lazy">
-                        <p class="gallery-caption">Traditional Upright Memorial</p>
-                    </div>
-                    <!-- Slant Markers -->
-                    <div class="gallery-scroll-item">
-                        <img src="assets/images/gallery/slant-1.jpg" alt="Polished slant marker with inscription" loading="lazy">
-                        <p class="gallery-caption">Polished Slant Marker</p>
-                    </div>
-                    <div class="gallery-scroll-item">
-                        <img src="assets/images/gallery/slant-2.jpg" alt="Custom slant memorial with design" loading="lazy">
-                        <p class="gallery-caption">Custom Slant Memorial</p>
-                    </div>
-                    <!-- Bronze Plaques -->
-                    <div class="gallery-scroll-item">
-                        <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
-                        <p class="gallery-caption">Bronze Memorial Plaque</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Five Pillars Section -->
-        <section id="pillars" class="five-pillars">
-            <div class="container">
-                <div class="pillars-grid">
-                    <div class="pillar">
-                        <h3>Custom Design</h3>
-                        <p>From favorite Bible passages to custom hobby icons, we design every stone in-house to your exact specifications.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Transparent Value</h3>
-                        <p>We work directly with families. Because our team is not commission-based, we provide the highest quality craftsmanship at the most competitive value.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Expert Guidance</h3>
-                        <p>We handle the technical details—from cemetery size restrictions to installation methods—so you can focus on the tribute itself.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Monument Restoration</h3>
-                        <p>Expert restoration services to preserve existing monuments and bring them back to their original beauty.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Professional Engraving</h3>
-                        <p>Meticulous engraving with attention to detail, ensuring every letter and design element is perfectly crafted.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer role="contentinfo" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <!-- Visit Us Section -->
-                <div class="footer-section">
-                    <h3>Visit Us</h3>
-                    <div class="footer-hours">
-                        <h4>Hours of Operation</h4>
-                        <ul>
-                            <li>M: 9:00 AM – 5:00 PM</li>
-                            <li>T: 9:00 AM – 5:00 PM</li>
-                            <li>W: 9:00 AM – 5:00 PM</li>
-                            <li>Th: 9:00 AM – 5:00 PM</li>
-                            <li>F: 9:00 AM – 5:00 PM</li>
-                            <li>Sat – Sun: Closed (By Appointment)</li>
-                        </ul>
-                    </div>
-                    <div class="footer-location">
-                        <h4>Location</h4>
-                        <address>
-                            <a href="https://www.google.com/maps/search/?api=1&query=175+E+Main+Street+Westminster+MD+21157" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="footer-address-link">
-                                175 E. Main Street<br>
-                                Westminster, MD 21157
-                            </a>
-                        </address>
-                        <p><a href="tel:+14432442077" class="footer-phone">443-244-2077</a></p>
-                    </div>
-                </div>
-
-                <!-- Contact Us Section -->
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p><a href="mailto:bradyudovich@icloud.com" class="footer-email">bradyudovich@icloud.com</a></p>
-                    
-                    <!-- Google Map -->
-                    <div class="footer-map">
-                        <iframe
-                            title="Mathias Monuments Map - Westminster, MD"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.8!2d-76.9958!3d39.5747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDM0JzI5LjAiTiA3NsKwNTknNDQuOSJX!5e0!3m2!1sen!2sus!4v1234567890"
-                            width="100%"
-                            height="200"
-                            style="border:0"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-copyright">
-                <p>&copy; 2026 Mathias Monuments &amp; Memorials. All rights reserved.</p>
-            </div>
+    <div id="lead-form" class="hidden">
+        <!-- Lead form content goes here -->
+    </div>
+    <section class="gallery">
+        <div class="gallery-container" loading="lazy">
+            <img src="public/project-images/our-work/image1.jpg" alt="Description of image1">
+            <img src="public/project-images/our-work/image2.jpg" alt="Description of image2">
+            <img src="public/project-images/our-work/image3.jpg" alt="Description of image3">
+            <!-- More images as needed -->
+        </div>
+    </section>
+    <footer>
+        <div class="footer-section hours">
+            <h4>Hours</h4>
+            <p>Monday - Friday: 9 AM - 5 PM</p>
+        </div>
+        <div class="footer-section location">
+            <h4>Location</h4>
+            <p>123 Monument Rd, City, State</p>
+            <a href="https://www.map-link.com">View on Map</a>
+            <iframe src="https://www.map-iframe.com" title="Location Map"></iframe>
+        </div>
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p><a href="tel:+1234567890">+1 234 567 890</a></p>
+            <p>redacted@example.com</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
