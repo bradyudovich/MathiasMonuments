@@ -6,20 +6,32 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const images = [
   {
-    src: `${BASE_PATH}/project-images/our-work/gravestone-1.jpg`,
-    alt: 'Custom granite monument with engraved design',
+    src: `${BASE_PATH}/project-images/our-work/murphy.jpg`,
+    alt: 'Murphy monument',
   },
   {
-    src: `${BASE_PATH}/project-images/our-work/gravestone-2.jpg`,
-    alt: 'Traditional upright monument with detailed inscription',
+    src: `${BASE_PATH}/project-images/our-work/bluegray-1.jpg`,
+    alt: 'Blue-gray monument 1',
   },
   {
-    src: `${BASE_PATH}/project-images/our-work/gravestone-3.jpg`,
-    alt: 'Heritage gravestone crafted with precision stonework',
+    src: `${BASE_PATH}/project-images/our-work/bluegray2.jpg`,
+    alt: 'Blue-gray monument 2',
   },
   {
-    src: `${BASE_PATH}/project-images/our-work/gravestone-4.jpg`,
-    alt: 'Premium granite memorial with custom engraving',
+    src: `${BASE_PATH}/project-images/our-work/laurentianrose2-1.jpg`,
+    alt: 'Laurentian rose monument',
+  },
+  {
+    src: `${BASE_PATH}/project-images/our-work/slant.jpg`,
+    alt: 'Slant monument',
+  },
+  {
+    src: `${BASE_PATH}/project-images/our-work/bevel.jpg`,
+    alt: 'Bevel marker',
+  },
+  {
+    src: `${BASE_PATH}/project-images/our-work/marker2.jpg`,
+    alt: 'Marker',
   },
 ]
 
