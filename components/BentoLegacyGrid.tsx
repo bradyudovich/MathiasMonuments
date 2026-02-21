@@ -31,7 +31,9 @@ export default function BentoLegacyGrid() {
         variants={tileVariants}
       >
         <h3>Bespoke Design & Engraving</h3>
-        <p>Tailored artistry featuring custom hobby icons, religious symbols, and professional engraving.</p>
+        <p>
+          Thoughtful, custom memorial design with hobby icons, religious imagery, and clean, professional lettering—crafted to reflect the details that made them who they were.
+        </p>
       </motion.div>
 
       <motion.div
@@ -42,7 +44,9 @@ export default function BentoLegacyGrid() {
         variants={tileVariants}
       >
         <h3>Heritage & Legacy</h3>
-        <p>Serving families with dignity since 1906. A Westminster fixture built on craftsmanship.</p>
+        <p>
+          Serving local families with dignity since 1906. A Westminster cornerstone known for steady workmanship, respectful guidance, and memorials built to endure.
+        </p>
       </motion.div>
 
       <motion.div
@@ -53,7 +57,9 @@ export default function BentoLegacyGrid() {
         variants={tileVariants}
       >
         <h3>Transparent Value</h3>
-        <p>Direct-to-family pricing with no sales commissions, ensuring the highest quality at the best value.</p>
+        <p>
+          Straightforward, direct-to-family pricing with no sales commissions—so you get clear options, honest guidance, and lasting quality without surprise markups.
+        </p>
       </motion.div>
 
       <motion.div
@@ -64,7 +70,9 @@ export default function BentoLegacyGrid() {
         variants={tileVariants}
       >
         <h3>Restoration & Guidance</h3>
-        <p>Expert monument restoration and full navigation of cemetery size and installation regulations.</p>
+        <p>
+          Skilled monument cleaning and restoration, plus hands-on help navigating cemetery rules, sizing requirements, and installation details from start to finish.
+        </p>
       </motion.div>
     </div>
   )
