@@ -48,90 +48,43 @@
         <nav role="navigation">
             <div class="container navbar-content">
                 <div class="navbar-slogan">Mathias Monuments &amp; Memorials</div>
-                <a href="#lead-capture" class="contact-btn smooth-scroll" aria-label="Claim your memorial planning credit">Get My Credit</a>
+                <a href="#home" class="contact-btn smooth-scroll" aria-label="Claim your $100 memorial credit">Get My Credit</a>
             </div>
         </nav>
     </header>
 
     <main role="main">
-        <!-- Split-Screen Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-grid">
-                <div class="hero-left">
-                    <h1>Honoring Legacies in Westminster Since 1906</h1>
-                    <p class="hero-description">A memorial is more than a marker; it is a commemorative focal point for family and friends to visit for generations. Since 1906, our goal has been to provide a personalized tribute that serves as a lasting anchor for your loved one's final resting spot.</p>
-                    <p class="hero-about">Mathias Monuments has been serving families with dignity and care for generations. We specialize in crafting beautiful, lasting memorials that celebrate the lives of those we've lost. Our skilled artisans combine traditional craftsmanship with modern techniques to create monuments that stand the test of time.</p>
-                    <a href="#lead-capture" class="hero-cta-btn smooth-scroll">Claim Your Memorial Planning Credit</a>
-                </div>
-                <div class="hero-right"></div>
-            </div>
-        </section>
-
-        <!-- Five Pillars Section -->
-        <section id="pillars" class="five-pillars">
+        <!-- Conversion Card — Lead Magnet (replaces hero) -->
+        <section id="home" class="conversion-card-section">
             <div class="container">
-                <div class="pillars-grid">
-                    <div class="pillar">
-                        <h3>Custom Design</h3>
-                        <p>From favorite Bible passages to custom hobby icons, we design every stone in-house to your exact specifications.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Transparent Value</h3>
-                        <p>We work directly with families. Because our team is not commission-based, we provide the highest quality craftsmanship at the most competitive value.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Expert Guidance</h3>
-                        <p>We handle the technical details—from cemetery size restrictions to installation methods—so you can focus on the tribute itself.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Monument Restoration</h3>
-                        <p>Expert restoration services to preserve existing monuments and bring them back to their original beauty.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3>Professional Engraving</h3>
-                        <p>Meticulous engraving with attention to detail, ensuring every letter and design element is perfectly crafted.</p>
-                    </div>
+                <div id="lead-form-container" class="conversion-card">
+                    <h1 class="conversion-headline">Claim Your $100 Memorial Credit</h1>
+                    <p class="conversion-subheadline">Supporting Westminster families with hand-crafted, lasting tributes. Claim your credit today to be applied toward any custom monument.</p>
+                    <form class="lead-form" id="lead-form" onsubmit="handleLeadCaptureSubmit(event)">
+                        <div class="lead-form-group">
+                            <label for="lead-name">Name <span aria-label="required">*</span></label>
+                            <input type="text" id="lead-name" name="name" required aria-required="true" placeholder="Your full name">
+                        </div>
+                        <div class="lead-form-group">
+                            <label for="lead-email">Email <span aria-label="required">*</span></label>
+                            <input type="email" id="lead-email" name="email" required aria-required="true" placeholder="your@email.com">
+                        </div>
+                        <!-- Hidden tracking field - populated from ?ref= URL parameter, defaults to "brady" -->
+                        <input type="hidden" id="lead-ref" name="ref" value="brady">
+                        <button type="submit" class="lead-submit-btn">Send My Credit Code</button>
+                    </form>
+                </div>
+                <div id="lead-thankyou" class="conversion-card lead-thankyou" style="display:none" aria-live="polite">
+                    <div class="lead-thankyou-icon" aria-hidden="true">&#10003;</div>
+                    <h2>Your Credit Has Been Reserved</h2>
+                    <p>Thank you, <span class="lead-name-display"></span>. A copy has been sent to your email.</p>
+                    <div class="coupon-code">BRADY100</div>
+                    <p class="coupon-instruction">Present this code when you visit or call us to apply your $100 memorial credit.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Lead Capture Section -->
-        <section id="lead-capture" class="lead-capture-section">
-            <div class="container">
-                <div class="lead-capture-inner">
-                    <div id="lead-form-container">
-                        <h2>Claim Your Memorial Planning Credit</h2>
-                        <p class="lead-subtitle">Reserve your exclusive planning credit — we'll send the code directly to your inbox.</p>
-                        <form class="lead-form" id="lead-form" onsubmit="handleLeadCaptureSubmit(event)">
-                            <div class="lead-form-group">
-                                <label for="lead-name">Name <span aria-label="required">*</span></label>
-                                <input type="text" id="lead-name" name="name" required aria-required="true" placeholder="Your full name">
-                            </div>
-                            <div class="lead-form-group">
-                                <label for="lead-email">Email <span aria-label="required">*</span></label>
-                                <input type="email" id="lead-email" name="email" required aria-required="true" placeholder="your@email.com">
-                            </div>
-                            <div class="lead-form-group">
-                                <label for="lead-phone">Phone</label>
-                                <input type="tel" id="lead-phone" name="phone" placeholder="(410) 000-0000">
-                            </div>
-                            <!-- Hidden tracking field - populated from ?ref= URL parameter, defaults to "brady" -->
-                            <input type="hidden" id="lead-ref" name="ref" value="brady">
-                            <button type="submit" class="lead-submit-btn">Claim My Credit</button>
-                        </form>
-                    </div>
-                    <div id="lead-thankyou" class="lead-thankyou" style="display:none" aria-live="polite">
-                        <div class="lead-thankyou-icon" aria-hidden="true">&#10003;</div>
-                        <h2>Your Credit Has Been Reserved</h2>
-                        <p>Thank you, <span class="lead-name-display"></span>. A copy has been sent to your email.</p>
-                        <div class="coupon-code" aria-label="Your coupon code: MATHIAS-2026">MATHIAS-2026</div>
-                        <p class="coupon-instruction">Present this code when you visit or call us to apply your planning credit.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Horizontal Scroll Gallery Section -->
+        <!-- Horizontal Scroll Gallery — Visual Proof directly below Conversion Card -->
         <section id="gallery" class="gallery-section">
             <div class="container">
                 <h2>Our Work</h2>
@@ -158,6 +111,34 @@
                     <div class="gallery-scroll-item">
                         <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
                         <p class="gallery-caption">Bronze Memorial Plaque</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Five Pillars Section -->
+        <section id="pillars" class="five-pillars">
+            <div class="container">
+                <div class="pillars-grid">
+                    <div class="pillar">
+                        <h3>Custom Design</h3>
+                        <p>From favorite Bible passages to custom hobby icons, we design every stone in-house to your exact specifications.</p>
+                    </div>
+                    <div class="pillar">
+                        <h3>Transparent Value</h3>
+                        <p>We work directly with families. Because our team is not commission-based, we provide the highest quality craftsmanship at the most competitive value.</p>
+                    </div>
+                    <div class="pillar">
+                        <h3>Expert Guidance</h3>
+                        <p>We handle the technical details—from cemetery size restrictions to installation methods—so you can focus on the tribute itself.</p>
+                    </div>
+                    <div class="pillar">
+                        <h3>Monument Restoration</h3>
+                        <p>Expert restoration services to preserve existing monuments and bring them back to their original beauty.</p>
+                    </div>
+                    <div class="pillar">
+                        <h3>Professional Engraving</h3>
+                        <p>Meticulous engraving with attention to detail, ensuring every letter and design element is perfectly crafted.</p>
                     </div>
                 </div>
             </div>
