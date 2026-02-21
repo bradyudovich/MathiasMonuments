@@ -19,8 +19,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Mathias Monuments & Memorials',
-    telephone: '410-848-4600',
-    email: 'info@mathiasmemorials.com',
+    telephone: '443-244-2077',
+    email: 'bradyudovich@icloud.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '175 E. Main Street',

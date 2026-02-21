@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Family-owned monument craftsmanship serving Maryland, Pennsylvania, and Virginia since 1906. Expert custom granite memorials, cemetery bylaw expertise, and restoration services. Located in Westminster, MD.">
-    <title>Mathias Monuments | Custom Memorials in Westminster, MD</title>
+    <meta name="description" content="Westminster Custom Headstones & Memorials by Mathias Monuments — family-owned since 1906. Expert custom granite monuments, cemetery bylaw expertise, and restoration services in Westminster, MD.">
+    <title>Mathias Monuments | Westminster Custom Headstones & Memorials</title>
     <!-- Google Fonts - Cinzel and Playfair Display for serif headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,8 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Mathias Monuments & Memorials",
-      "telephone": "410-848-4600",
-      "email": "info@mathiasmemorials.com",
+      "telephone": "+1-443-244-2077",
+      "email": "bradyudovich@icloud.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "175 E. Main Street",
@@ -48,21 +48,71 @@
         <nav role="navigation">
             <div class="container navbar-content">
                 <div class="navbar-slogan">Mathias Monuments &amp; Memorials</div>
-                <a href="#contact" class="contact-btn smooth-scroll" aria-label="Contact Us - Go to contact form">Contact Us</a>
+                <a href="#home" class="contact-btn smooth-scroll" aria-label="Claim your $100 memorial credit">Get My Credit</a>
             </div>
         </nav>
     </header>
 
     <main role="main">
-        <!-- Split-Screen Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-grid">
-                <div class="hero-left">
-                    <h1>Honoring Legacies in Westminster Since 1906</h1>
-                    <p class="hero-description">A memorial is more than a marker; it is a commemorative focal point for family and friends to visit for generations. Since 1906, our goal has been to provide a personalized tribute that serves as a lasting anchor for your loved one's final resting spot.</p>
-                    <p class="hero-about">Mathias Monuments has been serving families with dignity and care for generations. We specialize in crafting beautiful, lasting memorials that celebrate the lives of those we've lost. Our skilled artisans combine traditional craftsmanship with modern techniques to create monuments that stand the test of time.</p>
+        <!-- Conversion Card — Lead Magnet (replaces hero) -->
+        <section id="home" class="conversion-card-section">
+            <div class="container">
+                <div id="lead-form-container" class="conversion-card">
+                    <h1 class="conversion-headline">Claim Your $100 Memorial Credit</h1>
+                    <p class="conversion-subheadline">Supporting Westminster families with hand-crafted, lasting tributes. Claim your credit today to be applied toward any custom monument.</p>
+                    <form class="lead-form" id="lead-form" onsubmit="handleLeadCaptureSubmit(event)">
+                        <div class="lead-form-group">
+                            <label for="lead-name">Name <span aria-label="required">*</span></label>
+                            <input type="text" id="lead-name" name="name" required aria-required="true" placeholder="Your full name">
+                        </div>
+                        <div class="lead-form-group">
+                            <label for="lead-email">Email <span aria-label="required">*</span></label>
+                            <input type="email" id="lead-email" name="email" required aria-required="true" placeholder="your@email.com">
+                        </div>
+                        <!-- Hidden tracking field - populated from ?ref= URL parameter, defaults to "brady" -->
+                        <input type="hidden" id="lead-ref" name="ref" value="brady">
+                        <button type="submit" class="lead-submit-btn">Send My Credit Code</button>
+                    </form>
                 </div>
-                <div class="hero-right"></div>
+                <div id="lead-thankyou" class="conversion-card lead-thankyou" style="display:none" aria-live="polite">
+                    <div class="lead-thankyou-icon" aria-hidden="true">&#10003;</div>
+                    <h2>Your Credit Has Been Reserved</h2>
+                    <p>Thank you, <span class="lead-name-display"></span>. A copy has been sent to your email.</p>
+                    <div class="coupon-code">BRADY100</div>
+                    <p class="coupon-instruction">Present this code when you visit or call us to apply your $100 memorial credit.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Scroll Gallery — Visual Proof directly below Conversion Card -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2>Our Work</h2>
+                <div class="gallery-scroll">
+                    <!-- Upright Monuments -->
+                    <div class="gallery-scroll-item">
+                        <img src="assets/images/gallery/upright-1.jpg" alt="Elegant upright monument with custom engraving" loading="lazy">
+                        <p class="gallery-caption">Custom Upright Monument</p>
+                    </div>
+                    <div class="gallery-scroll-item">
+                        <img src="assets/images/gallery/upright-2.jpg" alt="Traditional upright memorial stone" loading="lazy">
+                        <p class="gallery-caption">Traditional Upright Memorial</p>
+                    </div>
+                    <!-- Slant Markers -->
+                    <div class="gallery-scroll-item">
+                        <img src="assets/images/gallery/slant-1.jpg" alt="Polished slant marker with inscription" loading="lazy">
+                        <p class="gallery-caption">Polished Slant Marker</p>
+                    </div>
+                    <div class="gallery-scroll-item">
+                        <img src="assets/images/gallery/slant-2.jpg" alt="Custom slant memorial with design" loading="lazy">
+                        <p class="gallery-caption">Custom Slant Memorial</p>
+                    </div>
+                    <!-- Bronze Plaques -->
+                    <div class="gallery-scroll-item">
+                        <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
+                        <p class="gallery-caption">Bronze Memorial Plaque</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -89,44 +139,6 @@
                     <div class="pillar">
                         <h3>Professional Engraving</h3>
                         <p>Meticulous engraving with attention to detail, ensuring every letter and design element is perfectly crafted.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Gallery Section -->
-        <section id="gallery" class="gallery-section">
-            <div class="container">
-                <h2>Our Work</h2>
-                <div class="gallery-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="upright">Upright Monuments</button>
-                    <button class="filter-btn" data-filter="slant">Slant & Bevel Markers</button>
-                    <button class="filter-btn" data-filter="bronze">Bronze Plaques</button>
-                </div>
-                <div class="gallery-grid">
-                    <!-- Upright Monuments -->
-                    <div class="gallery-item" data-category="upright">
-                        <img src="assets/images/gallery/upright-1.jpg" alt="Elegant upright monument with custom engraving" loading="lazy">
-                        <p class="gallery-caption">Custom Upright Monument</p>
-                    </div>
-                    <div class="gallery-item" data-category="upright">
-                        <img src="assets/images/gallery/upright-2.jpg" alt="Traditional upright memorial stone" loading="lazy">
-                        <p class="gallery-caption">Traditional Upright Memorial</p>
-                    </div>
-                    <!-- Slant Markers -->
-                    <div class="gallery-item" data-category="slant">
-                        <img src="assets/images/gallery/slant-1.jpg" alt="Polished slant marker with inscription" loading="lazy">
-                        <p class="gallery-caption">Polished Slant Marker</p>
-                    </div>
-                    <div class="gallery-item" data-category="slant">
-                        <img src="assets/images/gallery/slant-2.jpg" alt="Custom slant memorial with design" loading="lazy">
-                        <p class="gallery-caption">Custom Slant Memorial</p>
-                    </div>
-                    <!-- Bronze Plaques -->
-                    <div class="gallery-item" data-category="bronze">
-                        <img src="assets/images/gallery/bronze-1.jpg" alt="Bronze memorial plaque on granite base" loading="lazy">
-                        <p class="gallery-caption">Bronze Memorial Plaque</p>
                     </div>
                 </div>
             </div>
@@ -161,14 +173,14 @@
                                 Westminster, MD 21157
                             </a>
                         </address>
-                        <p><a href="tel:410-848-4600" class="footer-phone">410-848-4600</a></p>
+                        <p><a href="tel:+14432442077" class="footer-phone">443-244-2077</a></p>
                     </div>
                 </div>
 
                 <!-- Contact Us Section -->
                 <div class="footer-section">
                     <h3>Contact Us</h3>
-                    <p><a href="mailto:info@mathiasmemorials.com" class="footer-email">info@mathiasmemorials.com</a></p>
+                    <p><a href="mailto:bradyudovich@icloud.com" class="footer-email">bradyudovich@icloud.com</a></p>
                     
                     <!-- Google Map -->
                     <div class="footer-map">
@@ -184,31 +196,14 @@
                         </iframe>
                     </div>
                 </div>
-
-                <!-- Request a Quote Section -->
-                <div class="footer-section footer-quote">
-                    <h3>Request a Quote</h3>
-                    <form class="footer-form" id="quote-form" onsubmit="handleQuoteFormSubmit(event)">
-                        <div class="form-group-compact">
-                            <label for="name">Name <span aria-label="required">*</span></label>
-                            <input type="text" id="name" name="name" required aria-required="true">
-                        </div>
-                        <div class="form-group-compact">
-                            <label for="email">Email <span aria-label="required">*</span></label>
-                            <input type="email" id="email" name="email" required aria-required="true">
-                        </div>
-                        <button type="submit" class="footer-submit-button">Send Message</button>
-                    </form>
-                </div>
             </div>
             
             <div class="footer-copyright">
-                <p>&copy; 2026 Mathias Monuments & Memorials. All rights reserved.</p>
+                <p>&copy; 2026 Mathias Monuments &amp; Memorials. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    <script src="assets/js/gallery.js"></script>
 </body>
 </html>

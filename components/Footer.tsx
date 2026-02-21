@@ -23,27 +23,13 @@ export function Footer() {
     setSubmissionStatus('sending');
     setStatusMessage('');
 
-    try {
-      const response = await fetch('https://formspree.io/f/yourFormId', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formState)
-      });
-
-      if (response.ok) {
-        setSubmissionStatus('success');
-        setStatusMessage('Thank you! Your message has been sent successfully.');
-        setFormState({ name: '', email: '', message: '' });
-      } else {
-        setSubmissionStatus('error');
-        setStatusMessage('Sorry, there was an error sending your message. Please try again.');
-      }
-    } catch (error) {
-      setSubmissionStatus('error');
-      setStatusMessage('Sorry, there was an error sending your message. Please try again.');
-    }
+    // No external service — log data locally and show success
+    console.log('Form submission:', formState);
+    setTimeout(() => {
+      setSubmissionStatus('success');
+      setStatusMessage('Thank you! Your message has been received.');
+      setFormState({ name: '', email: '', message: '' });
+    }, 500);
   };
 
   return (
@@ -61,13 +47,13 @@ export function Footer() {
           <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
           <address className="not-italic space-y-2">
             <p>
-              <a href="tel:410-848-4600" className="text-amber-400 hover:underline" aria-label="Call Mathias Monuments">
-                410-848-4600
+              <a href="tel:+14432442077" className="text-amber-400 hover:underline" aria-label="Call us">
+                443-244-2077
               </a>
             </p>
             <p>
-              <a href="mailto:info@mathiasmemorials.com" className="hover:underline">
-                info@mathiasmemorials.com
+              <a href="mailto:bradyudovich@icloud.com" className="hover:underline">
+                bradyudovich@icloud.com
               </a>
             </p>
           </address>

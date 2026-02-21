@@ -14,26 +14,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form submission handler (for legacy index.html)
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // For demonstration purposes, show an alert
-        // In a real application, you would send this data to a server
-        alert(`Thank you, ${name}! Your message has been received. We'll get back to you at ${email} soon.`);
-        
-        // Reset the form
-        contactForm.reset();
-    });
-}
-
 // Add scroll effect to header - toggle header--scrolled class at 80px
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -46,20 +26,27 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Handle quote form submission
-function handleQuoteFormSubmit(event) {
+// Populate hidden ref field from ?ref= URL parameter (default: "brady")
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref') || 'brady';
+    const refField = document.getElementById('lead-ref');
+    if (refField) refField.value = ref;
+})();
+
+// Lead capture form: show coupon code without page refresh
+function handleLeadCaptureSubmit(event) {
     event.preventDefault();
-    
     const form = event.target;
-    const name = form.querySelector('#name').value;
-    const email = form.querySelector('#email').value;
-    const message = form.querySelector('#message').value;
-    
-    // For demonstration purposes, show an alert
-    // TODO: Replace this with actual backend API call when ready
-    // Example: fetch('/api/quote', { method: 'POST', body: JSON.stringify({ name, email, message }) })
-    alert(`Thank you, ${name}! Your quote request has been received. We'll get back to you at ${email} soon.`);
-    
-    // Reset the form
-    form.reset();
+    const name = form.querySelector('#lead-name').value.trim();
+    const email = form.querySelector('#lead-email').value.trim();
+    const ref = form.querySelector('#lead-ref').value;
+
+    // No external service — log submission data locally
+    console.log('Lead capture submission:', { name, email, ref });
+
+    document.getElementById('lead-form-container').style.display = 'none';
+    const thankyou = document.getElementById('lead-thankyou');
+    thankyou.querySelector('.lead-name-display').textContent = name || 'there';
+    thankyou.style.display = 'block';
 }
