@@ -29,10 +29,6 @@ const images = [
     src: `${BASE_PATH}/project-images/our-work/bevel.jpg`,
     alt: 'Bevel marker',
   },
-  {
-    src: `${BASE_PATH}/project-images/our-work/marker2.jpg`,
-    alt: 'Marker',
-  },
 ]
 
 export default function OurWork() {
