@@ -39,6 +39,11 @@ function handleLeadCaptureSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const name = form.querySelector('#lead-name').value.trim();
+    const email = form.querySelector('#lead-email').value.trim();
+    const ref = form.querySelector('#lead-ref').value;
+
+    // No external service — log submission data locally
+    console.log('Lead capture submission:', { name, email, ref });
 
     document.getElementById('lead-form-container').style.display = 'none';
     const thankyou = document.getElementById('lead-thankyou');
