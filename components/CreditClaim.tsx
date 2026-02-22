@@ -1,14 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
 export default function CreditClaim() {
+  const [visible, setVisible] = useState(false)
   const [formOpen, setFormOpen] = useState(false)
   const [formState, setFormState] = useState({ name: '', email: '' })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    const show = (_event: Event) => {
+      setVisible(true)
+    }
+    window.addEventListener('showCreditClaim', show)
+    return () => window.removeEventListener('showCreditClaim', show)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -23,8 +32,10 @@ export default function CreditClaim() {
     }, 500)
   }
 
+  if (!visible) return null
+
   return (
-    <section className="credit-claim-section">
+    <section id="claim-credit" className="credit-claim-section">
       <motion.div
         className="credit-claim-card"
         initial={{ opacity: 0, y: 30 }}

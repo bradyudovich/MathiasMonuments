@@ -1,40 +1,11 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 
 export function Footer() {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmissionStatus('sending');
-    setStatusMessage('');
-
-    // No external service — log data locally and show success
-    console.log('Form submission:', formState);
-    setTimeout(() => {
-      setSubmissionStatus('success');
-      setStatusMessage('Thank you! Your message has been received.');
-      setFormState({ name: '', email: '', message: '' });
-    }, 500);
-  };
-
   return (
     <footer id="contact" className="bg-slate-950 text-slate-200">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-2">
         {/* Column 1: Hours of Operation + Contact Us */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Hours of Operation</h3>
@@ -83,67 +54,6 @@ export function Footer() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-        </div>
-
-        {/* Column 3: Contact Form */}
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Send a Message</h3>
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div>
-              <label htmlFor="footer-name" className="sr-only">Name</label>
-              <input
-                type="text"
-                id="footer-name"
-                name="name"
-                placeholder="Your Name"
-                required
-                value={formState.name}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-            </div>
-            <div>
-              <label htmlFor="footer-email" className="sr-only">Email</label>
-              <input
-                type="email"
-                id="footer-email"
-                name="email"
-                placeholder="Your Email"
-                required
-                value={formState.email}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-            </div>
-            <div>
-              <label htmlFor="footer-message" className="sr-only">Message</label>
-              <textarea
-                id="footer-message"
-                name="message"
-                placeholder="Your Message"
-                required
-                rows={3}
-                value={formState.message}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={submissionStatus === 'sending'}
-              className="w-full px-4 py-2 bg-amber-400 text-slate-900 font-semibold rounded hover:bg-amber-500 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {submissionStatus === 'sending' ? 'Sending...' : 'Send Message'}
-            </button>
-            {statusMessage && (
-              <div 
-                role="status" 
-                className={`text-sm ${submissionStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}
-              >
-                {statusMessage}
-              </div>
-            )}
-          </form>
         </div>
       </div>
 
