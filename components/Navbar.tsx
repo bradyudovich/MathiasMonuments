@@ -29,7 +29,7 @@ export function Navbar({ onClaimClick }: NavbarProps) {
             className="plaque-btn"
             aria-label="$100 Memorial Credit – open credit claim offer"
           >
-            $100 Memorial Credit.
+            $100 Memorial Credit
           </button>
         </div>
       </div>
