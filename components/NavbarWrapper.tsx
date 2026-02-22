@@ -25,6 +25,9 @@ export function NavbarWrapper() {
 
   return (
     <>
+      <div className="announcement-bar">
+        Serving Westminster, Carroll County, and Central Maryland Since 1906.
+      </div>
       <Navbar onClaimClick={() => setIsModalOpen(true)} />
       <CreditClaim open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

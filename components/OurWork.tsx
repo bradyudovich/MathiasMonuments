@@ -31,6 +31,8 @@ const images = [
   },
 ]
 
+const doubled = [...images, ...images]
+
 export default function OurWork() {
   return (
     <section className="our-work-section" id="our-work">
@@ -44,17 +46,12 @@ export default function OurWork() {
         >
           Our Work
         </motion.h2>
+      </div>
 
-        <div className="our-work-scroll">
-          {images.map((image, index) => (
-            <motion.div
-              key={index}
-              className="our-work-item"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
-            >
+      <div className="our-work-carousel" aria-label="Our Work photo carousel">
+        <div className="our-work-track">
+          {doubled.map((image, index) => (
+            <div key={index} className="our-work-item" aria-hidden={index >= images.length}>
               <div className="our-work-img-wrapper">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -65,7 +62,7 @@ export default function OurWork() {
                 />
                 <div className="our-work-img-overlay" aria-hidden="true" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
