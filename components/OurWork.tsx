@@ -63,6 +63,7 @@ export default function OurWork() {
                   loading="lazy"
                   className="our-work-img"
                 />
+                <div className="our-work-img-overlay" aria-hidden="true" />
               </div>
             </motion.div>
           ))}
