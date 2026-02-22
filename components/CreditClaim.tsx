@@ -2,11 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 
 export default function CreditClaim() {
   const [visible, setVisible] = useState(false)
-  const [formOpen, setFormOpen] = useState(false)
   const [formState, setFormState] = useState({ name: '', email: '' })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -50,57 +48,37 @@ export default function CreditClaim() {
         </p>
 
         {!submitted ? (
-          <>
-            <button
-              className="claim-credit-btn"
-              onClick={() => setFormOpen((prev) => !prev)}
-              aria-expanded={formOpen}
-              aria-controls="credit-claim-form"
-            >
-              Claim Credit
+          <form className="credit-form" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="credit-name" className="sr-only">Your Name</label>
+              <input
+                id="credit-name"
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formState.name}
+                onChange={handleChange}
+                disabled={submitting}
+              />
+            </div>
+            <div>
+              <label htmlFor="credit-email" className="sr-only">Your Email</label>
+              <input
+                id="credit-email"
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={formState.email}
+                onChange={handleChange}
+                disabled={submitting}
+              />
+            </div>
+            <button type="submit" disabled={submitting}>
+              {submitting ? 'Submitting…' : 'Submit & Claim Credit'}
             </button>
-
-            <div className="scroll-hint" aria-hidden="true">
-              <ChevronDown size={20} strokeWidth={2} />
-            </div>
-
-            <div
-              id="credit-claim-form"
-              className={`credit-form-wrapper${formOpen ? ' open' : ''}`}
-            >
-              <form className="credit-form" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="credit-name" className="sr-only">Your Name</label>
-                  <input
-                    id="credit-name"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    value={formState.name}
-                    onChange={handleChange}
-                    disabled={submitting}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="credit-email" className="sr-only">Your Email</label>
-                  <input
-                    id="credit-email"
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                    value={formState.email}
-                    onChange={handleChange}
-                    disabled={submitting}
-                  />
-                </div>
-                <button type="submit" disabled={submitting}>
-                  {submitting ? 'Submitting…' : 'Submit & Claim Credit'}
-                </button>
-              </form>
-            </div>
-          </>
+          </form>
         ) : (
           <p className="credit-success-msg">
             Thank you! We&apos;ll be in touch to apply your $100 credit.
