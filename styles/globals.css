@@ -321,7 +321,39 @@ p {
   pointer-events: none;
 }
 
-/* Inventory Section */
+/* Our Work – Endless scrolling carousel */
+.our-work-carousel {
+  overflow: hidden;
+  position: relative;
+  /* fade edges for a polished look */
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.our-work-track {
+  display: flex;
+  /* Use margin-right on items instead of gap so -50% is a perfect loop point */
+  animation: scroll-carousel 35s linear infinite;
+  width: max-content;
+}
+
+.our-work-track .our-work-item {
+  margin-right: 1.25rem;
+  scroll-snap-align: unset;
+}
+
+@keyframes scroll-carousel {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .our-work-track {
+    animation-duration: 90s;
+  }
+}
+
+
 .inventory-section {
   padding: var(--section-padding);
   background: white;
@@ -927,25 +959,28 @@ footer {
   }
 }
 
-/* Navbar geographic anchor subheadline */
-.navbar-geo-anchor {
+/* Top announcement bar */
+.announcement-bar {
+  width: 100%;
+  background-color: var(--deep-onyx);
+  color: var(--burnished-gold);
   font-family: var(--font-headline), serif;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.06em;
-  color: rgba(197, 160, 89, 0.75);
-  margin-top: 0.2rem;
-  white-space: nowrap;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 @media (min-width: 768px) {
-  .navbar-geo-anchor {
-    font-size: 0.75rem;
+  .announcement-bar {
+    font-size: 1rem;
   }
 }
 
-/* Coupon-style CTA button */
-.coupon-btn {
+/* Plaque-style CTA button (double-border, clean rectangle) */
+.plaque-btn {
   position: relative;
   display: inline-block;
   background-color: #F6C85F;
@@ -955,48 +990,36 @@ footer {
   font-size: 0.75rem;
   white-space: nowrap;
   padding: 0.5rem 1.25rem;
-  border: none;
+  border: 1px solid rgba(15, 23, 42, 0.5);
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  /* Serrated/punched edges on left & right via clip-path zigzag */
-  clip-path: polygon(
-    0% 0%,
-    4% 12.5%, 0% 25%,
-    4% 37.5%, 0% 50%,
-    4% 62.5%, 0% 75%,
-    4% 87.5%, 0% 100%,
-    100% 100%,
-    96% 87.5%, 100% 75%,
-    96% 62.5%, 100% 50%,
-    96% 37.5%, 100% 25%,
-    96% 12.5%, 100% 0%
-  );
 }
 
-.coupon-btn::before {
+/* Inner border via pseudo-element for double-border plaque effect */
+.plaque-btn::after {
   content: '';
   position: absolute;
-  inset: 4px 8px;
-  border: 1px dashed rgba(15, 23, 42, 0.35);
+  inset: 3px;
+  border: 2px solid rgba(15, 23, 42, 0.3);
   pointer-events: none;
 }
 
-.coupon-btn:hover {
+.plaque-btn:hover {
   background-color: #f4d175;
   transform: translateY(-1px);
 }
 
-.coupon-btn:focus {
+.plaque-btn:focus {
   outline: none;
 }
 
-.coupon-btn:focus-visible {
+.plaque-btn:focus-visible {
   outline: 2px solid #F6C85F;
   outline-offset: 3px;
 }
 
 @media (min-width: 768px) {
-  .coupon-btn {
+  .plaque-btn {
     font-size: 0.875rem;
     padding: 0.625rem 1.75rem;
   }
