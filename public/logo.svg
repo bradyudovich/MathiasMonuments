@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" role="img" aria-label="Mathias Monuments &amp; Memorials">
+  <!-- Monument icon -->
+  <g fill="#C5A059">
+    <!-- Base slab -->
+    <rect x="4" y="48" width="32" height="6" rx="1"/>
+    <!-- Upright monument body -->
+    <rect x="10" y="20" width="20" height="30"/>
+    <!-- Rounded top -->
+    <path d="M10 20 Q20 8 30 20Z"/>
+  </g>
+  <!-- Text: Mathias Monuments -->
+  <text x="46" y="22" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Mathias Monuments</text>
+  <!-- Divider line -->
+  <line x1="46" y1="30" x2="314" y2="30" stroke="#C5A059" stroke-width="0.75" opacity="0.6"/>
+  <!-- Text: & Memorials -->
+  <text x="46" y="46" font-family="Georgia, serif" font-size="13" font-weight="400" fill="#C5A059" letter-spacing="1.5">&amp; MEMORIALS</text>
+</svg>
