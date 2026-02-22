@@ -1,9 +1,12 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Navbar } from './Navbar'
+import CreditClaim from './CreditClaim'
 
 export function NavbarWrapper() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('header')
@@ -20,7 +23,12 @@ export function NavbarWrapper() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  return <Navbar />
+  return (
+    <>
+      <Navbar onClaimClick={() => setIsModalOpen(true)} />
+      <CreditClaim open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
+  )
 }
 
 export default NavbarWrapper
