@@ -10,12 +10,20 @@ export default function CreditClaim() {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    const show = (_event: Event) => {
-      setVisible(true)
+    const toggle = (_event: Event) => {
+      setVisible(v => !v)
     }
-    window.addEventListener('showCreditClaim', show)
-    return () => window.removeEventListener('showCreditClaim', show)
+    window.addEventListener('toggleCreditClaim', toggle)
+    return () => window.removeEventListener('toggleCreditClaim', toggle)
   }, [])
+
+  useEffect(() => {
+    if (visible) {
+      setTimeout(() => {
+        document.getElementById('claim-credit')?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
+  }, [visible])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value })

@@ -56,6 +56,37 @@ MathiasMonuments/
 └── README.md               # This file
 ```
 
+## 📸 Generating Screenshots
+
+You can capture screenshots of key UI sections using the built-in Playwright script.
+
+### Prerequisites
+
+Install Playwright browser binaries (one-time setup):
+```bash
+npx playwright install chromium
+```
+
+### Steps
+
+1. Start the development server in one terminal:
+   ```bash
+   npm run dev
+   ```
+
+2. In another terminal, run:
+   ```bash
+   npm run screenshots
+   ```
+
+Screenshots are saved to `public/screenshots/`:
+- `header-logo.png` — Header with the site logo
+- `credit-claim.png` — CreditClaim section (opened)
+- `credit-above-bento.png` — CreditClaim positioned above the BentoLegacyGrid
+- `our-work-gallery.png` — Our Work horizontal gallery
+
+> **Note:** `public/screenshots/` is listed in `.gitignore` and won't be committed.
+
 ## 🛠️ Local Development
 
 ### Prerequisites
