@@ -259,35 +259,23 @@ p {
 }
 
 .our-work-scroll {
+  overflow: hidden;
+}
+
+.our-work-track {
   display: flex;
-  flex-direction: row;
-  gap: 1.25rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 1rem;
-  /* hide scrollbar on WebKit while still scrollable */
-  scrollbar-width: thin;
-  scrollbar-color: var(--burnished-gold) transparent;
+  animation: our-work-marquee 35s linear infinite;
 }
 
-.our-work-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-
-.our-work-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.our-work-scroll::-webkit-scrollbar-thumb {
-  background: var(--burnished-gold);
-  border-radius: 3px;
+@keyframes our-work-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .our-work-item {
   flex: 0 0 auto;
   width: clamp(260px, 35vw, 400px);
-  scroll-snap-align: start;
+  margin-right: 1.25rem;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
@@ -319,6 +307,44 @@ p {
   height: 50%;
   background: linear-gradient(to top, rgba(15, 23, 42, 0.55) 0%, transparent 100%);
   pointer-events: none;
+}
+
+/* Reduced-motion: disable animation, restore manual scroll */
+@media (prefers-reduced-motion: reduce) {
+  .our-work-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--burnished-gold) transparent;
+  }
+
+  .our-work-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .our-work-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .our-work-scroll::-webkit-scrollbar-thumb {
+    background: var(--burnished-gold);
+    border-radius: 3px;
+  }
+
+  .our-work-track {
+    animation: none;
+  }
+
+  .our-work-item {
+    scroll-snap-align: start;
+  }
+
+  /* Hide duplicate set in reduced-motion mode */
+  .our-work-item--dup {
+    display: none;
+  }
 }
 
 /* Inventory Section */
@@ -927,25 +953,29 @@ footer {
   }
 }
 
-/* Navbar geographic anchor subheadline */
-.navbar-geo-anchor {
+/* Top announcement bar */
+.announcement-bar {
+  width: 100%;
+  background-color: var(--deep-onyx);
+  color: var(--burnished-gold);
   font-family: var(--font-headline), serif;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  letter-spacing: 0.06em;
-  color: rgba(197, 160, 89, 0.75);
-  margin-top: 0.2rem;
-  white-space: nowrap;
+  letter-spacing: 0.07em;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 @media (min-width: 768px) {
-  .navbar-geo-anchor {
-    font-size: 0.75rem;
+  .announcement-bar {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
   }
 }
 
-/* Coupon-style CTA button */
-.coupon-btn {
+/* Plaque-style CTA button */
+.plaque-btn {
   position: relative;
   display: inline-block;
   background-color: #F6C85F;
@@ -954,51 +984,43 @@ footer {
   font-weight: 600;
   font-size: 0.75rem;
   white-space: nowrap;
-  padding: 0.5rem 1.25rem;
-  border: none;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(15, 23, 42, 0.6);
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  /* Serrated/punched edges on left & right via clip-path zigzag */
-  clip-path: polygon(
-    0% 0%,
-    4% 12.5%, 0% 25%,
-    4% 37.5%, 0% 50%,
-    4% 62.5%, 0% 75%,
-    4% 87.5%, 0% 100%,
-    100% 100%,
-    96% 87.5%, 100% 75%,
-    96% 62.5%, 100% 50%,
-    96% 37.5%, 100% 25%,
-    96% 12.5%, 100% 0%
-  );
 }
 
-.coupon-btn::before {
+.plaque-btn::before {
   content: '';
   position: absolute;
-  inset: 4px 8px;
-  border: 1px dashed rgba(15, 23, 42, 0.35);
+  inset: 3px;
+  border: 2px solid rgba(15, 23, 42, 0.3);
   pointer-events: none;
 }
 
-.coupon-btn:hover {
+.plaque-btn:hover:not(:disabled) {
   background-color: #f4d175;
   transform: translateY(-1px);
 }
 
-.coupon-btn:focus {
+.plaque-btn:focus {
   outline: none;
 }
 
-.coupon-btn:focus-visible {
+.plaque-btn:focus-visible {
   outline: 2px solid #F6C85F;
   outline-offset: 3px;
 }
 
+.plaque-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 @media (min-width: 768px) {
-  .coupon-btn {
+  .plaque-btn {
     font-size: 0.875rem;
-    padding: 0.625rem 1.75rem;
+    padding: 0.75rem 2rem;
   }
 }
 

@@ -25,7 +25,7 @@ export function NavbarWrapper() {
 
   return (
     <>
-      <Navbar onClaimClick={() => setIsModalOpen(true)} />
+      <Navbar onClaimClick={() => setIsModalOpen(true)} isModalOpen={isModalOpen} />
       <CreditClaim open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )

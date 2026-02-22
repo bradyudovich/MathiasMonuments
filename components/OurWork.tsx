@@ -45,28 +45,38 @@ export default function OurWork() {
           Our Work
         </motion.h2>
 
-        <div className="our-work-scroll">
-          {images.map((image, index) => (
-            <motion.div
-              key={index}
-              className="our-work-item"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
-            >
-              <div className="our-work-img-wrapper">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="our-work-img"
-                />
-                <div className="our-work-img-overlay" aria-hidden="true" />
+        <div className="our-work-scroll" aria-label="Gallery of our monument work">
+          <div className="our-work-track">
+            {images.map((image, index) => (
+              <div key={index} className="our-work-item">
+                <div className="our-work-img-wrapper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="our-work-img"
+                  />
+                  <div className="our-work-img-overlay" aria-hidden="true" />
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+            {/* Duplicate set for seamless loop – hidden from assistive technology */}
+            {images.map((image, index) => (
+              <div key={`dup-${index}`} className="our-work-item our-work-item--dup" aria-hidden="true">
+                <div className="our-work-img-wrapper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.src}
+                    alt=""
+                    loading="lazy"
+                    className="our-work-img"
+                  />
+                  <div className="our-work-img-overlay" aria-hidden="true" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
