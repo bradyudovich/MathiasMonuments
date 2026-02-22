@@ -9,9 +9,9 @@ export default function HomePage() {
     <main>
       <NavbarWrapper />
 
-      <BentoLegacyGrid />
-
       <CreditClaim />
+
+      <BentoLegacyGrid />
 
       <OurWork />
 

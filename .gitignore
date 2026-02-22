@@ -23,3 +23,6 @@ node_modules/
 # Dependencies
 yarn.lock
 pnpm-lock.yaml
+
+# Generated screenshots
+public/screenshots/

@@ -6,10 +6,7 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 export function Navbar() {
   const handleClaimCredit = () => {
-    window.dispatchEvent(new CustomEvent('showCreditClaim'));
-    setTimeout(() => {
-      document.getElementById('claim-credit')?.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+    window.dispatchEvent(new CustomEvent('toggleCreditClaim'));
   };
 
   return (

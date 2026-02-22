@@ -258,15 +258,36 @@ p {
   color: var(--deep-onyx);
 }
 
-.our-work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: var(--container-max);
-  margin: 0 auto;
+.our-work-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  /* hide scrollbar on WebKit while still scrollable */
+  scrollbar-width: thin;
+  scrollbar-color: var(--burnished-gold) transparent;
+}
+
+.our-work-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.our-work-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.our-work-scroll::-webkit-scrollbar-thumb {
+  background: var(--burnished-gold);
+  border-radius: 3px;
 }
 
 .our-work-item {
+  flex: 0 0 auto;
+  width: clamp(260px, 35vw, 400px);
+  scroll-snap-align: start;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
@@ -846,10 +867,6 @@ footer {
   .bento-grid {
     grid-template-columns: 1fr;
     padding: 3rem 2rem;
-  }
-
-  .our-work-grid {
-    grid-template-columns: 1fr;
   }
 
   .inventory-grid {

@@ -45,7 +45,7 @@ export default function OurWork() {
           Our Work
         </motion.h2>
 
-        <div className="our-work-grid">
+        <div className="our-work-scroll">
           {images.map((image, index) => (
             <motion.div
               key={index}
@@ -53,7 +53,7 @@ export default function OurWork() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
             >
               <div className="our-work-img-wrapper">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
