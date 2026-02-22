@@ -11,15 +11,15 @@ interface NavbarProps {
 export function Navbar({ onClaimClick }: NavbarProps) {
   return (
     <header className="bg-slate-900 sticky top-0 z-50 shadow-md transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
         <a href="/" aria-label="Mathias Monuments &amp; Memorials – Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${BASE_PATH}/logo.svg`}
             alt="Mathias Monuments &amp; Memorials"
-            width={240}
-            height={45}
-            className="h-9 md:h-11 w-auto"
+            width={312}
+            height={59}
+            className="h-12 md:h-14 w-auto"
           />
         </a>
 
