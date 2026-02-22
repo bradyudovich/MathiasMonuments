@@ -15,7 +15,7 @@ export function Navbar({ onClaimClick }: NavbarProps) {
         <a href="/" aria-label="Mathias Monuments &amp; Memorials – Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${BASE_PATH}/logo.svg`}
+            src={`${BASE_PATH}/logo.png`}
             alt="Mathias Monuments &amp; Memorials"
             width={312}
             height={59}
