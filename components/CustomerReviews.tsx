@@ -1,6 +1,8 @@
 'use client'
 
+import { useRef, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const REVIEWS = [
   {
@@ -21,6 +23,74 @@ const REVIEWS = [
 ]
 
 export default function CustomerReviews() {
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const currentIdxRef = useRef(0)
+  const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Returns scrollLeft that centers item[idx] in the viewport
+  const getScrollLeft = useCallback((idx: number): number => {
+    const el = viewportRef.current
+    if (!el || idx < 0 || idx >= el.children.length) return 0
+    const item = el.children[idx] as HTMLElement
+    return item.offsetLeft - (el.offsetWidth - item.offsetWidth) / 2
+  }, [])
+
+  // Scroll to a given index
+  const scrollToIndex = useCallback((idx: number, behavior: 'smooth' | 'auto' = 'smooth') => {
+    const el = viewportRef.current
+    if (!el) return
+    const clamped = Math.max(0, Math.min(REVIEWS.length - 1, idx))
+    const left = getScrollLeft(clamped)
+    if (behavior === 'auto') {
+      el.scrollLeft = left
+    } else {
+      el.scrollTo({ left, behavior: 'smooth' })
+    }
+    currentIdxRef.current = clamped
+  }, [getScrollLeft])
+
+  // Find the index of the item closest to the viewport center
+  const findNearestIndex = useCallback((): number => {
+    const el = viewportRef.current
+    if (!el) return 0
+    const viewCenter = el.scrollLeft + el.offsetWidth / 2
+    let best = 0
+    let bestDist = Infinity
+    for (let i = 0; i < el.children.length; i++) {
+      const item = el.children[i] as HTMLElement
+      const center = item.offsetLeft + item.offsetWidth / 2
+      const dist = Math.abs(center - viewCenter)
+      if (dist < bestDist) {
+        bestDist = dist
+        best = i
+      }
+    }
+    return best
+  }, [])
+
+  const handleScrollEnd = useCallback(() => {
+    currentIdxRef.current = findNearestIndex()
+  }, [findNearestIndex])
+
+  // Attach scroll-end listener (native scrollend or setTimeout fallback)
+  useEffect(() => {
+    const el = viewportRef.current
+    if (!el) return
+    if ('onscrollend' in window) {
+      el.addEventListener('scrollend', handleScrollEnd)
+      return () => el.removeEventListener('scrollend', handleScrollEnd)
+    }
+    const onScroll = () => {
+      if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current)
+      scrollEndTimerRef.current = setTimeout(handleScrollEnd, 150)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [handleScrollEnd])
+
+  const prev = useCallback(() => scrollToIndex(currentIdxRef.current - 1), [scrollToIndex])
+  const next = useCallback(() => scrollToIndex(currentIdxRef.current + 1), [scrollToIndex])
+
   return (
     <section className="reviews-section">
       <div className="container">
@@ -33,7 +103,18 @@ export default function CustomerReviews() {
         >
           Words from the Families We Serve
         </motion.h2>
-        <div className="reviews-grid">
+      </div>
+
+      <div className="reviews-carousel" aria-label="Customer reviews carousel">
+        <button
+          className="our-work-arrow our-work-arrow--prev reviews-arrow"
+          onClick={prev}
+          aria-label="Previous review"
+        >
+          <ChevronLeft size={20} aria-hidden="true" />
+        </button>
+
+        <div ref={viewportRef} className="reviews-viewport">
           {REVIEWS.map((review, i) => (
             <motion.div
               key={i}
@@ -48,6 +129,14 @@ export default function CustomerReviews() {
             </motion.div>
           ))}
         </div>
+
+        <button
+          className="our-work-arrow our-work-arrow--next reviews-arrow"
+          onClick={next}
+          aria-label="Next review"
+        >
+          <ChevronRight size={20} aria-hidden="true" />
+        </button>
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -33,144 +33,100 @@ const IMAGES = [
   },
 ]
 
-// Infinite loop: clone last 3 items at start, first 3 items at end to avoid end-gap on desktop
+// Seamless infinite loop: clone last N items at start, first N items at end
 const CLONE_COUNT = 3
 const slides = [...IMAGES.slice(-CLONE_COUNT), ...IMAGES, ...IMAGES.slice(0, CLONE_COUNT)]
 const IMAGE_COUNT = IMAGES.length
-const DRAG_THRESHOLD = 50 // px: minimum drag distance to trigger slide change
-const WHEEL_THROTTLE_MS = 450 // ms between wheel-triggered slide advances
-const WHEEL_DELTA_THRESHOLD = 30 // minimum wheel delta to trigger a slide advance
-const VERTICAL_SCROLL_RATIO = 2 // deltaY must exceed deltaX * this to be treated as vertical
-const MIN_VERTICAL_DELTA = 10 // minimum deltaY to apply the vertical scroll check
-const MOBILE_BREAKPOINT = 768 // px: must match CSS media query breakpoint for peek effect
 
 export default function OurWork() {
-  const trackRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
-  const [index, setIndex] = useState(CLONE_COUNT) // Start at first real item
-  const [animate, setAnimate] = useState(false)
-  const [itemWidth, setItemWidth] = useState(0)
-  const [centerOffset, setCenterOffset] = useState(0)
+  const currentIdxRef = useRef(CLONE_COUNT) // start at first real item
+  const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const isDraggingRef = useRef(false)
-  const dragStartXRef = useRef(0)
-  const dragDeltaRef = useRef(0)
+  // Returns the scrollLeft that centers item[idx] in the viewport
+  const getScrollLeft = useCallback((idx: number): number => {
+    const el = viewportRef.current
+    if (!el || idx < 0 || idx >= el.children.length) return 0
+    const item = el.children[idx] as HTMLElement
+    return item.offsetLeft - (el.offsetWidth - item.offsetWidth) / 2
+  }, [])
 
-  // Measure item width (item width + gap) from DOM
+  // Initialize scroll position to first real item (instant, no animation)
   useEffect(() => {
-    const update = () => {
-      const track = trackRef.current
-      const viewport = viewportRef.current
-      if (!track || !viewport || track.children.length < 2) return
-      const r0 = track.children[0].getBoundingClientRect()
-      const r1 = track.children[1].getBoundingClientRect()
-      setItemWidth(r1.left - r0.left)
-      // On mobile, center the active slide for peek effect
-      if (viewport.offsetWidth < MOBILE_BREAKPOINT) {
-        setCenterOffset(Math.max(0, (viewport.offsetWidth - r0.width) / 2))
-      } else {
-        setCenterOffset(0)
+    const el = viewportRef.current
+    if (!el) return
+    requestAnimationFrame(() => {
+      el.scrollLeft = getScrollLeft(CLONE_COUNT)
+    })
+  }, [getScrollLeft])
+
+  // Scroll to index with optional smooth animation
+  const scrollToIndex = useCallback((idx: number, behavior: 'smooth' | 'auto' = 'smooth') => {
+    const el = viewportRef.current
+    if (!el || idx < 0 || idx >= el.children.length) return
+    const left = getScrollLeft(idx)
+    if (behavior === 'auto') {
+      el.scrollLeft = left
+    } else {
+      el.scrollTo({ left, behavior: 'smooth' })
+    }
+    currentIdxRef.current = idx
+  }, [getScrollLeft])
+
+  // Find the index of the item closest to the viewport center
+  const findNearestIndex = useCallback((): number => {
+    const el = viewportRef.current
+    if (!el) return CLONE_COUNT
+    const viewCenter = el.scrollLeft + el.offsetWidth / 2
+    let best = CLONE_COUNT
+    let bestDist = Infinity
+    for (let i = 0; i < el.children.length; i++) {
+      const item = el.children[i] as HTMLElement
+      const center = item.offsetLeft + item.offsetWidth / 2
+      const dist = Math.abs(center - viewCenter)
+      if (dist < bestDist) {
+        bestDist = dist
+        best = i
       }
     }
-    update()
-    const ro = new ResizeObserver(update)
-    if (trackRef.current) ro.observe(trackRef.current)
-    return () => ro.disconnect()
+    return best
   }, [])
 
-  // Enable animation after first paint
-  useEffect(() => {
-    setAnimate(true)
-  }, [])
-
-  const jumpTo = useCallback((i: number) => {
-    setAnimate(false)
-    setIndex(i)
-  }, [])
-
-  const goTo = useCallback((i: number) => {
-    setAnimate(true)
-    setIndex(i)
-  }, [])
-
-  const prev = useCallback(() => goTo(index - 1), [goTo, index])
-  const next = useCallback(() => goTo(index + 1), [goTo, index])
-
-  // After transition ends, silently jump when on clone slides
-  const handleTransitionEnd = useCallback(() => {
-    if (index < CLONE_COUNT) {
-      jumpTo(index + IMAGE_COUNT)
-    } else if (index >= CLONE_COUNT + IMAGE_COUNT) {
-      jumpTo(index - IMAGE_COUNT)
+  // After scrolling ends: update index and silently wrap from clone zones to real items
+  const handleScrollEnd = useCallback(() => {
+    const idx = findNearestIndex()
+    currentIdxRef.current = idx
+    if (idx < CLONE_COUNT) {
+      // Landed on a leading clone — jump to matching real item
+      const el = viewportRef.current
+      if (el) el.scrollLeft = getScrollLeft(idx + IMAGE_COUNT)
+      currentIdxRef.current = idx + IMAGE_COUNT
+    } else if (idx >= CLONE_COUNT + IMAGE_COUNT) {
+      // Landed on a trailing clone — jump to matching real item
+      const el = viewportRef.current
+      if (el) el.scrollLeft = getScrollLeft(idx - IMAGE_COUNT)
+      currentIdxRef.current = idx - IMAGE_COUNT
     }
-  }, [index, jumpTo])
+  }, [findNearestIndex, getScrollLeft])
 
-  // Mouse drag handlers
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    isDraggingRef.current = true
-    dragStartXRef.current = e.clientX
-    dragDeltaRef.current = 0
-    // Prevent text selection and default drag behavior during carousel interaction
-    e.preventDefault()
-  }, [])
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDraggingRef.current) return
-    dragDeltaRef.current = e.clientX - dragStartXRef.current
-  }, [])
-
-  const handleMouseUp = useCallback(() => {
-    if (!isDraggingRef.current) return
-    isDraggingRef.current = false
-    if (dragDeltaRef.current < -DRAG_THRESHOLD) next()
-    else if (dragDeltaRef.current > DRAG_THRESHOLD) prev()
-  }, [next, prev])
-
-  // Touch handlers
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    dragStartXRef.current = e.touches[0].clientX
-    dragDeltaRef.current = 0
-  }, [])
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    dragDeltaRef.current = e.touches[0].clientX - dragStartXRef.current
-  }, [])
-
-  const handleTouchEnd = useCallback(() => {
-    if (dragDeltaRef.current < -DRAG_THRESHOLD) next()
-    else if (dragDeltaRef.current > DRAG_THRESHOLD) prev()
-  }, [next, prev])
-
-  // Wheel / trackpad scroll support
-  const nextRef = useRef(next)
-  const prevRef = useRef(prev)
-  nextRef.current = next
-  prevRef.current = prev
-  const wheelLastRef = useRef(0)
-
+  // Attach scroll-end listener (native scrollend or setTimeout fallback)
   useEffect(() => {
-    const viewport = viewportRef.current
-    if (!viewport) return
-    const onWheel = (e: WheelEvent) => {
-      const absDx = Math.abs(e.deltaX)
-      const absDy = Math.abs(e.deltaY)
-      // Pure vertical scroll — let the page handle it
-      if (absDy > absDx * VERTICAL_SCROLL_RATIO && absDy > MIN_VERTICAL_DELTA) return
-      e.preventDefault()
-      const now = Date.now()
-      if (now - wheelLastRef.current < WHEEL_THROTTLE_MS) return
-      const delta = absDx >= absDy ? e.deltaX : e.deltaY
-      if (delta > WHEEL_DELTA_THRESHOLD) {
-        nextRef.current()
-        wheelLastRef.current = now
-      } else if (delta < -WHEEL_DELTA_THRESHOLD) {
-        prevRef.current()
-        wheelLastRef.current = now
-      }
+    const el = viewportRef.current
+    if (!el) return
+    if ('onscrollend' in window) {
+      el.addEventListener('scrollend', handleScrollEnd)
+      return () => el.removeEventListener('scrollend', handleScrollEnd)
     }
-    viewport.addEventListener('wheel', onWheel, { passive: false })
-    return () => viewport.removeEventListener('wheel', onWheel)
-  }, [])
+    const onScroll = () => {
+      if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current)
+      scrollEndTimerRef.current = setTimeout(handleScrollEnd, 150)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [handleScrollEnd])
+
+  const prev = useCallback(() => scrollToIndex(currentIdxRef.current - 1), [scrollToIndex])
+  const next = useCallback(() => scrollToIndex(currentIdxRef.current + 1), [scrollToIndex])
 
   return (
     <section className="our-work-section" id="our-work">
@@ -195,46 +151,26 @@ export default function OurWork() {
           <ChevronLeft size={20} aria-hidden="true" />
         </button>
 
-        <div
-          ref={viewportRef}
-          className="our-work-viewport"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            ref={trackRef}
-            className="our-work-track"
-            style={{
-              transform: itemWidth > 0 ? `translateX(${-index * itemWidth + centerOffset}px)` : undefined,
-              transition: animate ? 'transform 0.4s ease' : 'none',
-            }}
-            onTransitionEnd={handleTransitionEnd}
-          >
-            {slides.map((image, i) => (
-              <div
-                key={i}
-                className="our-work-item"
-                aria-hidden={i === 0 || i === slides.length - 1}
-              >
-                <div className="our-work-img-wrapper">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    loading="lazy"
-                    className="our-work-img"
-                    draggable={false}
-                  />
-                  <div className="our-work-img-overlay" aria-hidden="true" />
-                </div>
+        <div ref={viewportRef} className="our-work-viewport">
+          {slides.map((image, i) => (
+            <div
+              key={i}
+              className="our-work-item"
+              aria-hidden={i < CLONE_COUNT || i >= CLONE_COUNT + IMAGE_COUNT}
+            >
+              <div className="our-work-img-wrapper">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="our-work-img"
+                  draggable={false}
+                />
+                <div className="our-work-img-overlay" aria-hidden="true" />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <button
