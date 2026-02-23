@@ -80,7 +80,7 @@ npx playwright install chromium
    ```
 
 Screenshots are saved to `public/screenshots/`:
-- `header-logo.png` — Header with the site logo
+- `header-Logo 1 Words Only Trasnparent.png` — Header with the site logo
 - `credit-claim.png` — CreditClaim section (opened)
 - `credit-above-bento.png` — CreditClaim positioned above the BentoLegacyGrid
 - `our-work-gallery.png` — Our Work horizontal gallery
