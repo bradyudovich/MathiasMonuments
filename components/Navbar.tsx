@@ -10,8 +10,8 @@ interface NavbarProps {
 
 export function Navbar({ onClaimClick }: NavbarProps) {
   return (
-    <header className="bg-slate-900 sticky top-0 z-50 shadow-md transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
+    <header className="bg-[#F8F9FA] sticky top-0 z-50 shadow-sm border-b border-slate-200 transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" aria-label="Mathias Monuments &amp; Memorials – Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
