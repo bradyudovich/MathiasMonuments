@@ -33,8 +33,9 @@ const IMAGES = [
   },
 ]
 
-// Infinite loop: clone last item at start, first item at end
-const slides = [IMAGES[IMAGES.length - 1], ...IMAGES, IMAGES[0]]
+// Infinite loop: clone last 3 items at start, first 3 items at end to avoid end-gap on desktop
+const CLONE_COUNT = 3
+const slides = [...IMAGES.slice(-CLONE_COUNT), ...IMAGES, ...IMAGES.slice(0, CLONE_COUNT)]
 const IMAGE_COUNT = IMAGES.length
 const DRAG_THRESHOLD = 50 // px: minimum drag distance to trigger slide change
 const WHEEL_THROTTLE_MS = 450 // ms between wheel-triggered slide advances
@@ -45,7 +46,7 @@ const MIN_VERTICAL_DELTA = 10 // minimum deltaY to apply the vertical scroll che
 export default function OurWork() {
   const trackRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
-  const [index, setIndex] = useState(1) // Start at first real item
+  const [index, setIndex] = useState(CLONE_COUNT) // Start at first real item
   const [animate, setAnimate] = useState(false)
   const [itemWidth, setItemWidth] = useState(0)
 
@@ -88,10 +89,10 @@ export default function OurWork() {
 
   // After transition ends, silently jump when on clone slides
   const handleTransitionEnd = useCallback(() => {
-    if (index === 0) {
-      jumpTo(IMAGE_COUNT)
-    } else if (index === slides.length - 1) {
-      jumpTo(1)
+    if (index < CLONE_COUNT) {
+      jumpTo(index + IMAGE_COUNT)
+    } else if (index >= CLONE_COUNT + IMAGE_COUNT) {
+      jumpTo(index - IMAGE_COUNT)
     }
   }, [index, jumpTo])
 
