@@ -99,3 +99,54 @@ function handleLeadCaptureSubmit(event) {
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
+
+// Gallery Lightbox
+(function() {
+    const overlay = document.getElementById('lightbox-overlay');
+    const closeBtn = document.getElementById('lightbox-close');
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (!overlay || !lightboxImg) return;
+
+    function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+
+    function closeLightbox() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Click on gallery items opens lightbox
+    document.querySelectorAll('.gallery-lightbox-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (img) openLightbox(img.src, img.alt);
+        });
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const img = this.querySelector('img');
+                if (img) openLightbox(img.src, img.alt);
+            }
+        });
+    });
+
+    // Close via X button
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+    // Close via overlay click (outside modal)
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeLightbox();
+    });
+
+    // Close via Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.style.display === 'flex') {
+            closeLightbox();
+        }
+    });
+})();

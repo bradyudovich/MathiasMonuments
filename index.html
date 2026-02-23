@@ -68,6 +68,14 @@
         </div>
     </div>
 
+    <!-- ===== LIGHTBOX ===== -->
+    <div id="lightbox-overlay" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image lightbox" style="display:none;">
+        <button id="lightbox-close" class="lightbox-close" aria-label="Close lightbox">&#x2715;</button>
+        <div class="lightbox-modal" id="lightbox-modal">
+            <img id="lightbox-img" src="" alt="" class="lightbox-img">
+        </div>
+    </div>
+
     <!-- ===== MAIN CONTENT ===== -->
     <main>
 
@@ -101,31 +109,31 @@
             <div class="container">
                 <h2>Our Work</h2>
                 <div class="gallery-scroll" role="list">
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Blue-Gray Granite full size">
                         <img src="public/project-images/our-work/bluegray2.jpg" alt="Blue-gray granite memorial – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Blue-Gray Granite</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Bevel Style full size">
                         <img src="public/project-images/our-work/bevel.jpg" alt="Bevel-style headstone – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Bevel Style</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Blue-Gray Upright full size">
                         <img src="public/project-images/our-work/bluegray-1.jpg" alt="Blue-gray granite upright monument – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Blue-Gray Upright</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Laurentian Rose full size">
                         <img src="public/project-images/our-work/laurentianrose2-1.jpg" alt="Laurentian rose granite monument – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Laurentian Rose</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Family Monument full size">
                         <img src="public/project-images/our-work/murphy.jpg" alt="Murphy family monument – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Family Monument</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Flat Marker full size">
                         <img src="public/project-images/our-work/marker2.jpg" alt="Flat grave marker – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Flat Marker</p>
                     </div>
-                    <div class="gallery-scroll-item" role="listitem">
+                    <div class="gallery-scroll-item gallery-lightbox-item" role="listitem" tabindex="0" aria-label="View Slant Style full size">
                         <img src="public/project-images/our-work/slant.jpg" alt="Slant-style headstone – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Slant Style</p>
                     </div>
@@ -149,6 +157,30 @@
                     <div class="review-card">
                         <p class="review-text">"The attention to detail on the engraving was stunning. It is clear they take immense pride in their work, honoring the 1906 legacy with every stone they set."</p>
                         <p class="review-author">— The Miller Family</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"The team was incredibly patient as we designed my father's memorial. Their knowledge of local cemetery regulations saved us so much time and stress."</p>
+                        <p class="review-author">— The Peterson Family</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"After seeing how well my grandparents' monument from 1950 has held up, I knew there was no one else to trust for my own husband's stone. Quality that truly lasts generations."</p>
+                        <p class="review-author">— Linda R.</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"Mathias Monuments is a true Carroll County institution. They treated us like neighbors, not just customers, and the hand-etched detail was absolutely breathtaking."</p>
+                        <p class="review-author">— The Barnes Family</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"We needed a custom restoration on an older family plot, and the results were stunning. They managed to match the original 1920s style perfectly."</p>
+                        <p class="review-author">— David G.</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"Compassionate guidance from start to finish. They didn't rush us through the process, ensuring every hobby and detail was represented exactly how we envisioned."</p>
+                        <p class="review-author">— The Sterling Family</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"Professional, transparent pricing and no sales pressure. It's clear why they've been a cornerstone of Westminster since 1906."</p>
+                        <p class="review-author">— The O'Malley Family</p>
                     </div>
                 </div>
             </div>

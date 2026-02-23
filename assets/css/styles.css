@@ -96,6 +96,12 @@ nav {
     }
 }
 
+@media (max-width: 768px) {
+    nav {
+        padding: 0.6rem 0;
+    }
+}
+
 /* ==================== Memorial Grant Modal ==================== */
 .modal-overlay {
     position: fixed;
@@ -385,10 +391,10 @@ nav {
 .gallery-scroll {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
     gap: 1.5rem;
     padding-bottom: 1rem;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
 }
 
 .gallery-scroll::-webkit-scrollbar {
@@ -406,7 +412,6 @@ nav {
 
 .gallery-scroll-item {
     flex: 0 0 calc(30% - 0.75rem);
-    scroll-snap-align: start;
     overflow: hidden;
     border-radius: 4px;
     height: 280px;
@@ -505,6 +510,7 @@ footer p {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    align-items: start;
 }
 
 .footer-section h3 {
@@ -604,5 +610,70 @@ button:focus,
 input:focus,
 textarea:focus {
     outline: 2px solid var(--navy);
+    outline-offset: 2px;
+}
+
+/* ==================== Lightbox ==================== */
+.gallery-lightbox-item {
+    cursor: zoom-in;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(11, 37, 69, 0.88);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.lightbox-modal {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    display: block;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: rgba(11, 37, 69, 0.75);
+    border: 1px solid rgba(184, 149, 42, 0.5);
+    color: var(--white);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(184, 149, 42, 0.3);
+}
+
+.lightbox-close:focus-visible {
+    outline: 2px solid var(--gold);
     outline-offset: 2px;
 }
