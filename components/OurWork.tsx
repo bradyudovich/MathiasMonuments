@@ -42,6 +42,7 @@ const WHEEL_THROTTLE_MS = 450 // ms between wheel-triggered slide advances
 const WHEEL_DELTA_THRESHOLD = 30 // minimum wheel delta to trigger a slide advance
 const VERTICAL_SCROLL_RATIO = 2 // deltaY must exceed deltaX * this to be treated as vertical
 const MIN_VERTICAL_DELTA = 10 // minimum deltaY to apply the vertical scroll check
+const MOBILE_BREAKPOINT = 768 // px: must match CSS media query breakpoint for peek effect
 
 export default function OurWork() {
   const trackRef = useRef<HTMLDivElement>(null)
@@ -49,6 +50,7 @@ export default function OurWork() {
   const [index, setIndex] = useState(CLONE_COUNT) // Start at first real item
   const [animate, setAnimate] = useState(false)
   const [itemWidth, setItemWidth] = useState(0)
+  const [centerOffset, setCenterOffset] = useState(0)
 
   const isDraggingRef = useRef(false)
   const dragStartXRef = useRef(0)
@@ -58,10 +60,17 @@ export default function OurWork() {
   useEffect(() => {
     const update = () => {
       const track = trackRef.current
-      if (!track || track.children.length < 2) return
+      const viewport = viewportRef.current
+      if (!track || !viewport || track.children.length < 2) return
       const r0 = track.children[0].getBoundingClientRect()
       const r1 = track.children[1].getBoundingClientRect()
       setItemWidth(r1.left - r0.left)
+      // On mobile, center the active slide for peek effect
+      if (viewport.offsetWidth < MOBILE_BREAKPOINT) {
+        setCenterOffset(Math.max(0, (viewport.offsetWidth - r0.width) / 2))
+      } else {
+        setCenterOffset(0)
+      }
     }
     update()
     const ro = new ResizeObserver(update)
@@ -201,7 +210,7 @@ export default function OurWork() {
             ref={trackRef}
             className="our-work-track"
             style={{
-              transform: itemWidth > 0 ? `translateX(${-index * itemWidth}px)` : undefined,
+              transform: itemWidth > 0 ? `translateX(${-index * itemWidth + centerOffset}px)` : undefined,
               transition: animate ? 'transform 0.4s ease' : 'none',
             }}
             onTransitionEnd={handleTransitionEnd}
