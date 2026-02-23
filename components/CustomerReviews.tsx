@@ -31,7 +31,7 @@ export default function CustomerReviews() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Words from the Families We Serve.
+          Words from the Families We Serve
         </motion.h2>
         <div className="reviews-grid">
           {REVIEWS.map((review, i) => (

@@ -38,7 +38,7 @@ export function NavbarWrapper() {
   return (
     <>
       <div className="announcement-bar">
-        Serving Families in Westminster, Carroll County, and Surrounding Regions Since 1906.
+        Serving Families in Westminster, Carroll County, and Surrounding Regions Since 1906
       </div>
       <Navbar />
       <CreditClaim open={isModalOpen} onClose={handleClose} />
