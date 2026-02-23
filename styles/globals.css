@@ -287,7 +287,7 @@ p {
 .our-work-item {
   flex: 0 0 auto;
   width: clamp(260px, 35vw, 400px);
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
@@ -331,10 +331,21 @@ p {
   padding: 0 0.75rem;
 }
 
+/* Our Work – Scroll-snap carousel with peek effect */
 .our-work-viewport {
-  overflow: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   flex: 1;
+  display: flex;
+  gap: 1.25rem;
   cursor: grab;
+  overscroll-behavior-x: contain;
+}
+
+.our-work-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .our-work-viewport:active {
@@ -388,7 +399,7 @@ p {
   }
 }
 
-/* Mobile peek effect: show ~10-15% of adjacent slides on small screens */
+/* Mobile peek effect: show ~13% of adjacent slides on small screens */
 @media (max-width: 767px) {
   .our-work-section {
     overflow: hidden;
@@ -400,11 +411,12 @@ p {
   }
 
   .our-work-viewport {
-    overflow: visible;
+    overflow-x: scroll;
+    gap: 0.75rem;
   }
 
-  .our-work-track .our-work-item {
-    width: 76vw;
+  .our-work-item {
+    width: 74vw;
   }
 
   .our-work-arrow {
@@ -914,12 +926,28 @@ p {
   margin-bottom: 2.5rem;
 }
 
-.reviews-grid {
+/* Reviews carousel wrapper (arrows + viewport) */
+.reviews-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Arrow buttons hidden on desktop (all 3 reviews visible) */
+.reviews-arrow {
+  display: none;
+}
+
+/* Reviews viewport: grid on desktop, scroll-snap carousel on mobile */
+.reviews-viewport {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
-  max-width: var(--container-max);
-  margin: 0 auto;
 }
 
 .review-card {
@@ -949,9 +977,34 @@ p {
   margin-bottom: 0;
 }
 
-@media (max-width: 900px) {
-  .reviews-grid {
-    grid-template-columns: 1fr;
+/* Mobile: one card per view, center-snapped */
+@media (max-width: 767px) {
+  .reviews-carousel {
+    padding: 0;
+    gap: 0;
+  }
+
+  .reviews-arrow {
+    display: flex;
+  }
+
+  .reviews-viewport {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+    overscroll-behavior-x: contain;
+  }
+
+  .reviews-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
   }
 }
 
@@ -1077,18 +1130,19 @@ footer {
   background-color: var(--deep-onyx);
   color: var(--burnished-gold);
   font-family: var(--font-headline), serif;
-  font-size: 1.14rem; /* 0.875rem × 1.3 ≈ 1.1375rem, rounded to 1.14rem */
+  font-size: clamp(0.75rem, 3.5vw, 1.14rem);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-align: center;
   padding: 0.8rem 1rem;
-  line-height: 1.4;
+  line-height: 1.35;
   border-bottom: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 @media (min-width: 768px) {
   .announcement-bar {
     font-size: 1.3rem; /* 1rem × 1.3 */
+    line-height: 1.4;
     padding: 0.9rem 1rem;
   }
 }
