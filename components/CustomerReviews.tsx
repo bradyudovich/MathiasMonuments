@@ -52,9 +52,14 @@ const REVIEWS = [
   },
 ]
 
+// Seamless infinite loop: clone last N items at start, first N items at end
+const CLONE_COUNT = 3
+const slides = [...REVIEWS.slice(-CLONE_COUNT), ...REVIEWS, ...REVIEWS.slice(0, CLONE_COUNT)]
+const REVIEW_COUNT = REVIEWS.length
+
 export default function CustomerReviews() {
   const viewportRef = useRef<HTMLDivElement>(null)
-  const currentIdxRef = useRef(0)
+  const currentIdxRef = useRef(CLONE_COUNT) // start at first real item
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Returns scrollLeft that centers item[idx] in the viewport
@@ -65,26 +70,34 @@ export default function CustomerReviews() {
     return item.offsetLeft - (el.offsetWidth - item.offsetWidth) / 2
   }, [])
 
-  // Scroll to a given index
-  const scrollToIndex = useCallback((idx: number, behavior: 'smooth' | 'auto' = 'smooth') => {
+  // Initialize scroll position to first real item (instant, no animation)
+  useEffect(() => {
     const el = viewportRef.current
     if (!el) return
-    const clamped = Math.max(0, Math.min(REVIEWS.length - 1, idx))
-    const left = getScrollLeft(clamped)
+    requestAnimationFrame(() => {
+      el.scrollLeft = getScrollLeft(CLONE_COUNT)
+    })
+  }, [getScrollLeft])
+
+  // Scroll to index with optional smooth animation
+  const scrollToIndex = useCallback((idx: number, behavior: 'smooth' | 'auto' = 'smooth') => {
+    const el = viewportRef.current
+    if (!el || idx < 0 || idx >= el.children.length) return
+    const left = getScrollLeft(idx)
     if (behavior === 'auto') {
       el.scrollLeft = left
     } else {
       el.scrollTo({ left, behavior: 'smooth' })
     }
-    currentIdxRef.current = clamped
+    currentIdxRef.current = idx
   }, [getScrollLeft])
 
   // Find the index of the item closest to the viewport center
   const findNearestIndex = useCallback((): number => {
     const el = viewportRef.current
-    if (!el) return 0
+    if (!el) return CLONE_COUNT
     const viewCenter = el.scrollLeft + el.offsetWidth / 2
-    let best = 0
+    let best = CLONE_COUNT
     let bestDist = Infinity
     for (let i = 0; i < el.children.length; i++) {
       const item = el.children[i] as HTMLElement
@@ -98,9 +111,22 @@ export default function CustomerReviews() {
     return best
   }, [])
 
+  // After scrolling ends: update index and silently wrap from clone zones to real items
   const handleScrollEnd = useCallback(() => {
-    currentIdxRef.current = findNearestIndex()
-  }, [findNearestIndex])
+    const idx = findNearestIndex()
+    currentIdxRef.current = idx
+    if (idx < CLONE_COUNT) {
+      // Landed on a leading clone — jump to matching real item
+      const el = viewportRef.current
+      if (el) el.scrollLeft = getScrollLeft(idx + REVIEW_COUNT)
+      currentIdxRef.current = idx + REVIEW_COUNT
+    } else if (idx >= CLONE_COUNT + REVIEW_COUNT) {
+      // Landed on a trailing clone — jump to matching real item
+      const el = viewportRef.current
+      if (el) el.scrollLeft = getScrollLeft(idx - REVIEW_COUNT)
+      currentIdxRef.current = idx - REVIEW_COUNT
+    }
+  }, [findNearestIndex, getScrollLeft])
 
   // Attach scroll-end listener (native scrollend or setTimeout fallback)
   useEffect(() => {
@@ -145,19 +171,19 @@ export default function CustomerReviews() {
         </button>
 
         <div ref={viewportRef} className="reviews-viewport">
-          {REVIEWS.map((review, i) => (
-            <motion.div
-              key={i}
-              className="review-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-            >
-              <p className="review-text">&ldquo;{review.quote}&rdquo;</p>
-              <p className="review-author">&mdash; {review.author}</p>
-            </motion.div>
-          ))}
+          {slides.map((review, i) => {
+            const isReal = i >= CLONE_COUNT && i < CLONE_COUNT + REVIEW_COUNT
+            return (
+              <div
+                key={i}
+                className="review-card"
+                aria-hidden={!isReal}
+              >
+                <p className="review-text">&ldquo;{review.quote}&rdquo;</p>
+                <p className="review-author">&mdash; {review.author}</p>
+              </div>
+            )
+          })}
         </div>
 
         <button
