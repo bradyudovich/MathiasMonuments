@@ -43,23 +43,13 @@ export function Footer() {
             175 E. Main Street<br />
             Westminster, MD 21157
           </a>
-          <a
-            href="https://www.google.com/maps?q=175+E.+Main+Street,+Westminster,+MD+21157"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open 175 E. Main Street, Westminster, MD 21157 in Google Maps"
+          <iframe
+            src="https://maps.google.com/maps?q=175+E.+Main+Street,+Westminster,+MD+21157&output=embed&z=15"
+            title="Map showing Mathias Monuments location at 175 E. Main Street, Westminster, MD 21157"
             className="block w-full h-48 border border-slate-800 overflow-hidden rounded"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://staticmap.openstreetmap.de/staticmap.php?center=39.57562,-77.00314&zoom=15&size=600x192&markers=39.57562,-77.00314,lightblue1"
-              alt="Map showing Mathias Monuments location at 175 E. Main Street, Westminster, MD 21157"
-              width={600}
-              height={192}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </a>
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
 

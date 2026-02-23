@@ -37,9 +37,14 @@ const IMAGES = [
 const slides = [IMAGES[IMAGES.length - 1], ...IMAGES, IMAGES[0]]
 const IMAGE_COUNT = IMAGES.length
 const DRAG_THRESHOLD = 50 // px: minimum drag distance to trigger slide change
+const WHEEL_THROTTLE_MS = 450 // ms between wheel-triggered slide advances
+const WHEEL_DELTA_THRESHOLD = 30 // minimum wheel delta to trigger a slide advance
+const VERTICAL_SCROLL_RATIO = 2 // deltaY must exceed deltaX * this to be treated as vertical
+const MIN_VERTICAL_DELTA = 10 // minimum deltaY to apply the vertical scroll check
 
 export default function OurWork() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const viewportRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(1) // Start at first real item
   const [animate, setAnimate] = useState(false)
   const [itemWidth, setItemWidth] = useState(0)
@@ -126,6 +131,37 @@ export default function OurWork() {
     else if (dragDeltaRef.current > DRAG_THRESHOLD) prev()
   }, [next, prev])
 
+  // Wheel / trackpad scroll support
+  const nextRef = useRef(next)
+  const prevRef = useRef(prev)
+  nextRef.current = next
+  prevRef.current = prev
+  const wheelLastRef = useRef(0)
+
+  useEffect(() => {
+    const viewport = viewportRef.current
+    if (!viewport) return
+    const onWheel = (e: WheelEvent) => {
+      const absDx = Math.abs(e.deltaX)
+      const absDy = Math.abs(e.deltaY)
+      // Pure vertical scroll — let the page handle it
+      if (absDy > absDx * VERTICAL_SCROLL_RATIO && absDy > MIN_VERTICAL_DELTA) return
+      e.preventDefault()
+      const now = Date.now()
+      if (now - wheelLastRef.current < WHEEL_THROTTLE_MS) return
+      const delta = absDx >= absDy ? e.deltaX : e.deltaY
+      if (delta > WHEEL_DELTA_THRESHOLD) {
+        nextRef.current()
+        wheelLastRef.current = now
+      } else if (delta < -WHEEL_DELTA_THRESHOLD) {
+        prevRef.current()
+        wheelLastRef.current = now
+      }
+    }
+    viewport.addEventListener('wheel', onWheel, { passive: false })
+    return () => viewport.removeEventListener('wheel', onWheel)
+  }, [])
+
   return (
     <section className="our-work-section" id="our-work">
       <div className="container">
@@ -150,6 +186,7 @@ export default function OurWork() {
         </button>
 
         <div
+          ref={viewportRef}
           className="our-work-viewport"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
