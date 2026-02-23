@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300" role="img" aria-label="Map showing Mathias Monuments at 175 E. Main Street, Westminster, MD">
+  <!-- Map background -->
+  <rect width="600" height="300" fill="#e8e2d9"/>
+
+  <!-- Water feature top-left -->
+  <rect x="0" y="0" width="120" height="80" fill="#c9dce8" opacity="0.6"/>
+
+  <!-- City blocks -->
+  <rect x="0" y="90" width="80" height="60" fill="#d6cfca" rx="2"/>
+  <rect x="90" y="90" width="100" height="60" fill="#d6cfca" rx="2"/>
+  <rect x="200" y="90" width="80" height="60" fill="#d6cfca" rx="2"/>
+  <rect x="0" y="165" width="60" height="70" fill="#d6cfca" rx="2"/>
+  <rect x="70" y="165" width="110" height="70" fill="#d6cfca" rx="2"/>
+  <rect x="420" y="90" width="80" height="60" fill="#d6cfca" rx="2"/>
+  <rect x="510" y="90" width="90" height="60" fill="#d6cfca" rx="2"/>
+  <rect x="420" y="165" width="60" height="70" fill="#d6cfca" rx="2"/>
+  <rect x="490" y="165" width="110" height="70" fill="#d6cfca" rx="2"/>
+  <rect x="0" y="245" width="180" height="55" fill="#d6cfca" rx="2"/>
+  <rect x="420" y="245" width="180" height="55" fill="#d6cfca" rx="2"/>
+
+  <!-- Main Street (horizontal) -->
+  <rect x="0" y="148" width="600" height="18" fill="#ffffff"/>
+  <line x1="0" y1="157" x2="600" y2="157" stroke="#f0e68c" stroke-width="1.5" stroke-dasharray="30 10" opacity="0.5"/>
+
+  <!-- Vertical cross-street left -->
+  <rect x="190" y="0" width="14" height="300" fill="#f5f0eb"/>
+  <!-- Vertical cross-street right -->
+  <rect x="395" y="0" width="14" height="300" fill="#f5f0eb"/>
+
+  <!-- Park / green area center -->
+  <rect x="210" y="90" width="180" height="160" fill="#c8dbb5" rx="4"/>
+  <ellipse cx="300" cy="170" rx="60" ry="40" fill="#b5cc9e" opacity="0.7"/>
+  <text x="300" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#5a7a3a" opacity="0.8">Westminster</text>
+  <text x="300" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#5a7a3a" opacity="0.7">Carroll County</text>
+
+  <!-- Location pin -->
+  <g transform="translate(285, 120)">
+    <!-- Pin shadow -->
+    <ellipse cx="15" cy="46" rx="7" ry="3" fill="rgba(0,0,0,0.25)"/>
+    <!-- Pin body -->
+    <path d="M15 0 C6.7 0 0 6.7 0 15 C0 26.3 15 45 15 45 C15 45 30 26.3 30 15 C30 6.7 23.3 0 15 0Z" fill="#c0392b"/>
+    <path d="M15 0 C6.7 0 0 6.7 0 15 C0 26.3 15 45 15 45 C15 45 30 26.3 30 15 C30 6.7 23.3 0 15 0Z" fill="url(#pinGrad)" opacity="0.4"/>
+    <!-- Pin inner circle -->
+    <circle cx="15" cy="15" r="7" fill="#ffffff" opacity="0.9"/>
+    <defs>
+      <radialGradient id="pinGrad" cx="30%" cy="30%">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#8b1a1a"/>
+      </radialGradient>
+    </defs>
+  </g>
+
+  <!-- Address label box -->
+  <rect x="160" y="38" width="280" height="56" rx="4" fill="white" opacity="0.92" filter="url(#shadow)"/>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <text x="300" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1e3a5f">Mathias Monuments &amp; Memorials</text>
+  <text x="300" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#555">175 E. Main Street, Westminster, MD 21157</text>
+
+  <!-- Scale / attribution strip -->
+  <rect x="0" y="280" width="600" height="20" fill="rgba(0,0,0,0.12)"/>
+  <text x="10" y="293" font-family="Arial, sans-serif" font-size="9" fill="#666">© OpenStreetMap contributors</text>
+  <text x="590" y="293" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#666">Westminster, MD</text>
+</svg>

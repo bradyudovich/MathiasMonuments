@@ -2,6 +2,8 @@
 
 import React from "react";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export function Footer() {
   return (
     <footer id="contact" className="bg-slate-950 text-slate-200">
@@ -43,13 +45,20 @@ export function Footer() {
             175 E. Main Street<br />
             Westminster, MD 21157
           </a>
-          <iframe
-            src="https://maps.google.com/maps?q=175+E.+Main+Street,+Westminster,+MD+21157&output=embed&z=15"
-            title="Map showing Mathias Monuments location at 175 E. Main Street, Westminster, MD 21157"
-            className="block w-full h-48 border border-slate-800 overflow-hidden rounded"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <a
+            href="https://www.google.com/maps?q=175+E.+Main+Street,+Westminster,+MD+21157"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Mathias Monuments location in Google Maps"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${BASE_PATH}/images/map-static.svg`}
+              alt="Map showing Mathias Monuments at 175 E. Main Street, Westminster, MD 21157"
+              className="block w-full h-48 border border-slate-800 overflow-hidden rounded"
+              loading="lazy"
+            />
+          </a>
         </div>
       </div>
 
