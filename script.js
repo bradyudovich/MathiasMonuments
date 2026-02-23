@@ -26,33 +26,43 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// CTA button: reveal lead capture form with fade-in
+// Memorial Grant Modal: auto-open after 5 seconds (once per session)
 (function() {
-    const ctaBtn = document.getElementById('cta-button');
-    const formSection = document.getElementById('lead-form-section');
-    if (ctaBtn && formSection) {
-        ctaBtn.addEventListener('click', function() {
-            const isExpanded = ctaBtn.getAttribute('aria-expanded') === 'true';
-            if (!isExpanded) {
-                formSection.style.display = 'block';
-                formSection.classList.add('fade-in');
-                formSection.removeAttribute('aria-hidden');
-                ctaBtn.setAttribute('aria-expanded', 'true');
-                // Focus the first visible input for accessibility
-                const firstInput = formSection.querySelector('input:not([type="hidden"])');
-                if (firstInput) {
-                    firstInput.focus();
-                }
-                // Smooth scroll to the form
-                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                formSection.style.display = 'none';
-                formSection.classList.remove('fade-in');
-                formSection.setAttribute('aria-hidden', 'true');
-                ctaBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
+    const modal = document.getElementById('memorial-modal');
+    const closeBtn = document.getElementById('modal-close');
+    if (!modal) return;
+
+    function openModal() {
+        modal.style.display = 'flex';
+        modal.classList.add('fade-in');
+        if (closeBtn) closeBtn.focus();
+        document.body.style.overflow = 'hidden';
     }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modal.classList.remove('fade-in');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('memorialModalShown', '1');
+    }
+
+    if (!sessionStorage.getItem('memorialModalShown')) {
+        setTimeout(openModal, 5000);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
 })();
 
 // Populate hidden ref field from ?ref= URL parameter (default: "brady")

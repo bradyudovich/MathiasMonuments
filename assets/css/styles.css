@@ -8,6 +8,7 @@
 
 :root {
     --navy: #0B2545;
+    --gold: #B8952A;
     --text-color: #333;
     --light-bg: #f8f9fa;
     --white: #ffffff;
@@ -87,21 +88,96 @@ nav {
     .navbar-slogan {
         font-size: 1.2rem;
     }
-    
-    .contact-btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.85rem;
-    }
 }
 
 @media (max-width: 420px) {
     .navbar-slogan {
         font-size: 1.1rem;
     }
-    
-    .contact-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.8rem;
+}
+
+/* ==================== Memorial Grant Modal ==================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 37, 69, 0.65);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-overlay.fade-in {
+    animation: fadeIn 0.35s ease forwards;
+}
+
+.modal-voucher {
+    position: relative;
+    background: var(--white);
+    max-width: 540px;
+    width: 100%;
+    border-radius: 6px;
+    /* Ticket-stub notched edges (left & right semicircular cutouts) */
+    -webkit-mask-image:
+        radial-gradient(circle at 0 50%, transparent 18px, black 18px),
+        radial-gradient(circle at 100% 50%, transparent 18px, black 18px);
+    -webkit-mask-composite: destination-in;
+    mask-image:
+        radial-gradient(circle at 0 50%, transparent 18px, black 18px),
+        radial-gradient(circle at 100% 50%, transparent 18px, black 18px);
+    mask-composite: intersect;
+    box-shadow: 0 12px 48px rgba(11, 37, 69, 0.35);
+}
+
+.modal-voucher-inner {
+    padding: 2.5rem 2.75rem;
+    border: 2px dashed rgba(11, 37, 69, 0.35);
+    border-radius: 4px;
+    margin: 0.75rem;
+    text-align: center;
+}
+
+.modal-voucher-tag {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 3px;
+    margin-bottom: 1.25rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--navy);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(11, 37, 69, 0.08);
+}
+
+@media (max-width: 560px) {
+    .modal-voucher-inner {
+        padding: 2rem 1.5rem;
+    }
+    .modal-voucher {
+        -webkit-mask-image: none;
+        mask-image: none;
     }
 }
 
@@ -333,11 +409,12 @@ nav {
     scroll-snap-align: start;
     overflow: hidden;
     border-radius: 4px;
+    height: 280px;
 }
 
 .gallery-scroll-item img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
@@ -353,6 +430,62 @@ nav {
 @media (max-width: 768px) {
     .gallery-scroll-item {
         flex: 0 0 82%;
+        height: 240px;
+    }
+}
+
+/* ==================== Customer Reviews Section ==================== */
+.reviews-section {
+    padding: 5rem 0;
+    background-color: var(--navy);
+}
+
+.reviews-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.review-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem 1.75rem;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    font-style: italic;
+}
+
+.review-author {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .reviews-heading {
+        font-size: 2rem;
     }
 }
 

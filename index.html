@@ -16,22 +16,17 @@
         <nav>
             <div class="container navbar-content">
                 <p class="navbar-slogan">Mathias Monuments</p>
-                <button
-                    id="cta-button"
-                    class="contact-btn"
-                    aria-expanded="false"
-                    aria-controls="lead-form-section">
-                    $100 Memorial Credit
-                </button>
             </div>
         </nav>
     </header>
 
-    <!-- ===== LEAD CAPTURE (hidden by default) ===== -->
-    <section id="lead-form-section" class="conversion-card-section" aria-hidden="true" style="display:none;">
-        <div class="container">
-            <div class="conversion-card">
-                <h2 class="conversion-headline">Claim Your $100 Memorial Credit</h2>
+    <!-- ===== MEMORIAL GRANT MODAL ===== -->
+    <div id="memorial-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none;">
+        <div class="modal-voucher">
+            <button id="modal-close" class="modal-close" aria-label="Close offer">&#x2715;</button>
+            <div class="modal-voucher-inner">
+                <div class="modal-voucher-tag">Exclusive Offer</div>
+                <h2 id="modal-title" class="conversion-headline">Claim Your $100 Memorial Credit</h2>
                 <p class="conversion-subheadline">
                     Enter your name and email below and we'll send your exclusive discount code —
                     good toward any headstone or memorial at Mathias Monuments.
@@ -71,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ===== MAIN CONTENT ===== -->
     <main>
@@ -133,6 +128,27 @@
                     <div class="gallery-scroll-item" role="listitem">
                         <img src="public/project-images/our-work/slant.jpg" alt="Slant-style headstone – Mathias Monuments" loading="lazy">
                         <p class="gallery-caption">Slant Style</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section class="reviews-section">
+            <div class="container">
+                <h2 class="reviews-heading">Words from the Families We Serve.</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <p class="review-text">"Mathias Monuments provided a level of craftsmanship that is rare to find today. They took the time to understand our family's story and translated it into a beautiful, lasting tribute."</p>
+                        <p class="review-author">— The Harrison Family</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"Being a Westminster local, I knew of their long history, but the personal guidance we received exceeded all expectations. They made a difficult process feel manageable and dignified."</p>
+                        <p class="review-author">— Margaret S.</p>
+                    </div>
+                    <div class="review-card">
+                        <p class="review-text">"The attention to detail on the engraving was stunning. It is clear they take immense pride in their work, honoring the 1906 legacy with every stone they set."</p>
+                        <p class="review-author">— The Miller Family</p>
                     </div>
                 </div>
             </div>
