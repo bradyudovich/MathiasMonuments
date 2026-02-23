@@ -4,14 +4,10 @@ import React from "react";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
-interface NavbarProps {
-  onClaimClick: () => void;
-}
-
-export function Navbar({ onClaimClick }: NavbarProps) {
+export function Navbar() {
   return (
     <header className="bg-white sticky top-0 z-50 shadow-md border-b border-slate-200 transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-center gap-3 md:flex-row md:justify-between md:gap-0">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${BASE_PATH}/Logo.png`}
@@ -20,16 +16,6 @@ export function Navbar({ onClaimClick }: NavbarProps) {
           height={288}
           className="h-24 w-auto"
         />
-
-        <div>
-          <button
-            onClick={onClaimClick}
-            className="plaque-btn"
-            aria-label="$100 Memorial Credit – open credit claim offer"
-          >
-            $100 Memorial Credit
-          </button>
-        </div>
       </div>
     </header>
   );

@@ -23,13 +23,27 @@ export function NavbarWrapper() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Auto-open the modal once per session after 5 seconds
+  useEffect(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('memorialModalShown')) return
+    const timer = setTimeout(() => {
+      setIsModalOpen(true)
+    }, 5000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleClose = () => {
+    sessionStorage.setItem('memorialModalShown', '1')
+    setIsModalOpen(false)
+  }
+
   return (
     <>
       <div className="announcement-bar">
         Serving Families in Westminster, Carroll County, and Surrounding Regions Since 1906.
       </div>
-      <Navbar onClaimClick={() => setIsModalOpen(true)} />
-      <CreditClaim open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Navbar />
+      <CreditClaim open={isModalOpen} onClose={handleClose} />
     </>
   )
 }
