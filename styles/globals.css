@@ -388,6 +388,30 @@ p {
   }
 }
 
+/* Mobile peek effect: show ~10-15% of adjacent slides on small screens */
+@media (max-width: 767px) {
+  .our-work-section {
+    overflow: hidden;
+  }
+
+  .our-work-carousel {
+    padding: 0;
+    gap: 0;
+  }
+
+  .our-work-viewport {
+    overflow: visible;
+  }
+
+  .our-work-track .our-work-item {
+    width: 76vw;
+  }
+
+  .our-work-arrow {
+    display: none;
+  }
+}
+
 
 .inventory-section {
   padding: var(--section-padding);

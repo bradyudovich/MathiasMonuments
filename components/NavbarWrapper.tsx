@@ -23,9 +23,8 @@ export function NavbarWrapper() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Auto-open the modal once per session after 5 seconds
+  // Auto-open the modal every page load after 5 seconds
   useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('memorialModalShown')) return
     const timer = setTimeout(() => {
       setIsModalOpen(true)
     }, 5000)
@@ -33,7 +32,6 @@ export function NavbarWrapper() {
   }, [])
 
   const handleClose = () => {
-    sessionStorage.setItem('memorialModalShown', '1')
     setIsModalOpen(false)
   }
 

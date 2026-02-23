@@ -26,7 +26,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Memorial Grant Modal: auto-open after 5 seconds (once per session)
+// Memorial Grant Modal: auto-open after 5 seconds on every page load
 (function() {
     const modal = document.getElementById('memorial-modal');
     const closeBtn = document.getElementById('modal-close');
@@ -43,12 +43,9 @@ window.addEventListener('scroll', function() {
         modal.style.display = 'none';
         modal.classList.remove('fade-in');
         document.body.style.overflow = '';
-        sessionStorage.setItem('memorialModalShown', '1');
     }
 
-    if (!sessionStorage.getItem('memorialModalShown')) {
-        setTimeout(openModal, 5000);
-    }
+    setTimeout(openModal, 5000);
 
     if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
