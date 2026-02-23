@@ -76,49 +76,53 @@ export default function CreditClaim({ open, onClose }: CreditClaimProps) {
               ×
             </button>
 
-            <h2 id="credit-modal-title">$100 Credit Toward Your Monument</h2>
-            <p>
-              Claim your exclusive $100 design credit when you schedule a consultation with our team.
-              Honor your loved one with a monument that truly reflects their life.
-            </p>
+            <div className="credit-modal-inner">
+              <div className="credit-modal-tag">Exclusive Offer</div>
 
-            {!submitted ? (
-              <form className="credit-form" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="credit-name" className="sr-only">Your Name</label>
-                  <input
-                    id="credit-name"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    value={formState.name}
-                    onChange={handleChange}
-                    disabled={submitting}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="credit-email" className="sr-only">Your Email</label>
-                  <input
-                    id="credit-email"
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                    value={formState.email}
-                    onChange={handleChange}
-                    disabled={submitting}
-                  />
-                </div>
-                <button type="submit" disabled={submitting}>
-                  {submitting ? 'Submitting…' : 'Submit & Claim Credit'}
-                </button>
-              </form>
-            ) : (
-              <p className="credit-success-msg">
-                Thank you! We&apos;ll be in touch to apply your $100 credit.
+              <h2 id="credit-modal-title">$100 Credit Toward Your Monument</h2>
+              <p>
+                Claim your exclusive $100 design credit when you schedule a consultation with our team.
+                Honor your loved one with a monument that truly reflects their life.
               </p>
-            )}
+
+              {!submitted ? (
+                <form className="credit-form" onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="credit-name" className="sr-only">Your Name</label>
+                    <input
+                      id="credit-name"
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      value={formState.name}
+                      onChange={handleChange}
+                      disabled={submitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="credit-email" className="sr-only">Your Email</label>
+                    <input
+                      id="credit-email"
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      value={formState.email}
+                      onChange={handleChange}
+                      disabled={submitting}
+                    />
+                  </div>
+                  <button type="submit" disabled={submitting}>
+                    {submitting ? 'Submitting…' : 'Submit & Claim Credit'}
+                  </button>
+                </form>
+              ) : (
+                <p className="credit-success-msg">
+                  Thank you! We&apos;ll be in touch to apply your $100 credit.
+                </p>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}

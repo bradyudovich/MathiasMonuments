@@ -204,7 +204,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  padding: var(--section-padding);
+  padding: 2.5rem 2rem 6rem;
   max-width: var(--container-max);
   margin: 0 auto;
 }
@@ -297,11 +297,12 @@ p {
 .our-work-img-wrapper {
   overflow: hidden;
   position: relative;
+  height: 300px;
 }
 
 .our-work-img {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
@@ -877,6 +878,59 @@ p {
   display: block;
 }
 
+/* Customer Reviews Section */
+.reviews-section {
+  padding: var(--section-padding);
+  background-color: var(--monument-blue);
+}
+
+.reviews-heading {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.review-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+  border-top: 4px solid var(--burnished-gold);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--monument-blue);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.review-author {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--burnished-gold);
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Footer */
 footer {
   background: var(--deep-onyx);
@@ -1108,33 +1162,72 @@ footer {
   overflow-y: auto;
 }
 
-/* Modal dialog */
+/* Modal dialog - ticket-stub voucher style */
 .credit-modal-dialog {
   position: relative;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  border: 2px solid var(--granite-gray);
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.32));
   max-width: 540px;
   width: 100%;
   text-align: center;
+  /* Ticket-stub: semicircle notch cutouts on left & right vertical centers */
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% calc(50% - 16px),
+    calc(100% - 4px) calc(50% - 14.5px),
+    calc(100% - 10px) calc(50% - 10px),
+    calc(100% - 14.5px) calc(50% - 4px),
+    calc(100% - 16px) 50%,
+    calc(100% - 14.5px) calc(50% + 4px),
+    calc(100% - 10px) calc(50% + 10px),
+    calc(100% - 4px) calc(50% + 14.5px),
+    100% calc(50% + 16px),
+    100% 100%, 0% 100%,
+    0% calc(50% + 16px),
+    4px calc(50% + 14.5px),
+    10px calc(50% + 10px),
+    14.5px calc(50% + 4px),
+    16px 50%,
+    14.5px calc(50% - 4px),
+    10px calc(50% - 10px),
+    4px calc(50% - 14.5px),
+    0% calc(50% - 16px)
+  );
+}
+
+/* Inner wrapper with dashed gold perforation border */
+.credit-modal-inner {
+  margin: 0.65rem;
+  padding: 2.5rem 1.75rem;
+  border: 1.5px dashed rgba(197, 160, 89, 0.55);
 }
 
 @media (min-width: 640px) {
-  .credit-modal-dialog {
-    padding: 3rem 4rem;
+  .credit-modal-inner {
+    padding: 3rem 3.5rem;
   }
 }
 
+/* "Exclusive Offer" gold tag */
+.credit-modal-tag {
+  display: inline-block;
+  background-color: var(--burnished-gold);
+  color: var(--deep-onyx);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+
+/* Constrain h2 size inside modal so it doesn't wrap to 3+ lines */
 .credit-modal-dialog h2 {
   color: var(--deep-onyx);
   margin-bottom: 1rem;
-}
-
-.credit-modal-dialog > p {
-  color: rgba(15, 23, 42, 0.7);
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
 }
 
 /* Modal close button */
