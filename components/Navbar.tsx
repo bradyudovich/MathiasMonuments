@@ -10,7 +10,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`${BASE_PATH}/Logo.png`}
+          src={`${BASE_PATH}/Logo 1 Words Only Trasnparent.png`}
           alt="Mathias Monuments &amp; Memorials"
           width={1227}
           height={288}
