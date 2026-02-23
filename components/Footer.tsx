@@ -7,7 +7,7 @@ const ADDRESS_QUERY = '175+E+Main+Street+Westminster+MD+21157'
 export function Footer() {
   return (
     <footer id="contact" className="bg-slate-950 text-slate-200">
-      <div className="max-w-6xl mx-auto px-4 pt-3 pb-6 grid gap-6 md:grid-cols-2">
+      <div className="max-w-6xl mx-auto px-4 pt-3 pb-6 grid gap-6 md:grid-cols-2 md:items-start">
         {/* Column 1: Hours of Operation + Contact Us */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Hours of Operation</h3>

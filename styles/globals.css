@@ -287,7 +287,6 @@ p {
 .our-work-item {
   flex: 0 0 auto;
   width: clamp(260px, 35vw, 400px);
-  scroll-snap-align: center;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
@@ -334,7 +333,6 @@ p {
 /* Our Work – Scroll-snap carousel with peek effect */
 .our-work-viewport {
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   flex: 1;
@@ -980,17 +978,30 @@ p {
 /* Mobile: one card per view, center-snapped */
 @media (max-width: 767px) {
   .reviews-carousel {
-    padding: 0;
+    padding: 0 2.75rem;
     gap: 0;
   }
 
   .reviews-arrow {
     display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .reviews-arrow.our-work-arrow--prev {
+    left: 0;
+  }
+
+  .reviews-arrow.our-work-arrow--next {
+    right: 0;
   }
 
   .reviews-viewport {
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -1334,6 +1345,65 @@ footer {
 }
 
 .credit-modal-close:focus-visible {
+  outline: 2px solid var(--burnished-gold);
+  outline-offset: 2px;
+}
+
+/* ==================== Lightbox ==================== */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.lightbox-modal {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  display: block;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(197, 160, 89, 0.5);
+  color: #fff;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(197, 160, 89, 0.3);
+}
+
+.lightbox-close:focus-visible {
   outline: 2px solid var(--burnished-gold);
   outline-offset: 2px;
 }

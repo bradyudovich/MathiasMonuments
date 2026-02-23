@@ -20,6 +20,36 @@ const REVIEWS = [
       'The attention to detail on the engraving was stunning. It is clear they take immense pride in their work, honoring the 1906 legacy with every stone they set.',
     author: 'The Miller Family',
   },
+  {
+    quote:
+      'The team was incredibly patient as we designed my father\u2019s memorial. Their knowledge of local cemetery regulations saved us so much time and stress.',
+    author: 'The Peterson Family',
+  },
+  {
+    quote:
+      'After seeing how well my grandparents\u2019 monument from 1950 has held up, I knew there was no one else to trust for my own husband\u2019s stone. Quality that truly lasts generations.',
+    author: 'Linda R.',
+  },
+  {
+    quote:
+      'Mathias Monuments is a true Carroll County institution. They treated us like neighbors, not just customers, and the hand-etched detail was absolutely breathtaking.',
+    author: 'The Barnes Family',
+  },
+  {
+    quote:
+      'We needed a custom restoration on an older family plot, and the results were stunning. They managed to match the original 1920s style perfectly.',
+    author: 'David G.',
+  },
+  {
+    quote:
+      'Compassionate guidance from start to finish. They didn\u2019t rush us through the process, ensuring every hobby and detail was represented exactly how we envisioned.',
+    author: 'The Sterling Family',
+  },
+  {
+    quote:
+      'Professional, transparent pricing and no sales pressure. It\u2019s clear why they\u2019ve been a cornerstone of Westminster since 1906.',
+    author: "The O\u2019Malley Family",
+  },
 ]
 
 export default function CustomerReviews() {

@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
@@ -42,6 +42,28 @@ export default function OurWork() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const currentIdxRef = useRef(CLONE_COUNT) // start at first real item
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [lightboxAlt, setLightboxAlt] = useState<string>('')
+
+  const openLightbox = useCallback((src: string, alt: string) => {
+    setLightboxSrc(src)
+    setLightboxAlt(alt)
+    document.body.style.overflow = 'hidden'
+  }, [])
+
+  const closeLightbox = useCallback(() => {
+    setLightboxSrc(null)
+    document.body.style.overflow = ''
+  }, [])
+
+  // Close lightbox on Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [closeLightbox])
 
   // Returns the scrollLeft that centers item[idx] in the viewport
   const getScrollLeft = useCallback((idx: number): number => {
@@ -129,6 +151,7 @@ export default function OurWork() {
   const next = useCallback(() => scrollToIndex(currentIdxRef.current + 1), [scrollToIndex])
 
   return (
+    <>
     <section className="our-work-section" id="our-work">
       <div className="container">
         <motion.h2
@@ -152,25 +175,36 @@ export default function OurWork() {
         </button>
 
         <div ref={viewportRef} className="our-work-viewport">
-          {slides.map((image, i) => (
-            <div
-              key={i}
-              className="our-work-item"
-              aria-hidden={i < CLONE_COUNT || i >= CLONE_COUNT + IMAGE_COUNT}
-            >
-              <div className="our-work-img-wrapper">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="our-work-img"
-                  draggable={false}
-                />
-                <div className="our-work-img-overlay" aria-hidden="true" />
+          {slides.map((image, i) => {
+            const isReal = i >= CLONE_COUNT && i < CLONE_COUNT + IMAGE_COUNT
+            return (
+              <div
+                key={i}
+                className="our-work-item"
+                aria-hidden={!isReal}
+              >
+                <div
+                  className="our-work-img-wrapper"
+                  onClick={isReal ? () => openLightbox(image.src, image.alt) : undefined}
+                  style={isReal ? { cursor: 'zoom-in' } : undefined}
+                  role={isReal ? 'button' : undefined}
+                  tabIndex={isReal ? 0 : undefined}
+                  aria-label={isReal ? `View full size: ${image.alt}` : undefined}
+                  onKeyDown={isReal ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(image.src, image.alt) } } : undefined}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="our-work-img"
+                    draggable={false}
+                  />
+                  <div className="our-work-img-overlay" aria-hidden="true" />
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         <button
@@ -182,5 +216,29 @@ export default function OurWork() {
         </button>
       </div>
     </section>
+
+    {/* Lightbox Modal */}
+    {lightboxSrc && (
+      <div
+        className="lightbox-overlay"
+        onClick={closeLightbox}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image lightbox"
+      >
+        <div className="lightbox-modal" onClick={(e) => e.stopPropagation()}>
+          <button
+            className="lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            <X size={24} aria-hidden="true" />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={lightboxSrc} alt={lightboxAlt} className="lightbox-img" />
+        </div>
+      </div>
+    )}
+    </>
   )
 }
