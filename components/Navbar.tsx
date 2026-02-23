@@ -10,11 +10,11 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-2 flex justify-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`${BASE_PATH}/Logo 1 Words Only Trasnparent.png`}
+          src={`${BASE_PATH}/logo-cropped.png`}
           alt="Mathias Monuments &amp; Memorials"
-          width={1227}
-          height={288}
-          className="h-36 w-auto"
+          width={1111}
+          height={227}
+          className="h-24 w-auto"
         />
       </div>
     </header>
