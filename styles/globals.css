@@ -935,20 +935,29 @@ p {
   margin: 0 auto;
 }
 
-/* Arrow buttons hidden on desktop (all 3 reviews visible) */
-.reviews-arrow {
+/* Reviews viewport: horizontal scroll carousel (matches Our Work pattern) */
+.reviews-viewport {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+  display: flex;
+  gap: 1.25rem;
+  cursor: grab;
+  overscroll-behavior-x: contain;
+}
+
+.reviews-viewport::-webkit-scrollbar {
   display: none;
 }
 
-/* Reviews viewport: grid on desktop, scroll-snap carousel on mobile */
-.reviews-viewport {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+.reviews-viewport:active {
+  cursor: grabbing;
 }
 
 .review-card {
+  flex: 0 0 auto;
+  width: clamp(300px, 38vw, 440px);
   background: #ffffff;
   border-radius: 8px;
   padding: 2rem 1.75rem;
@@ -975,47 +984,27 @@ p {
   margin-bottom: 0;
 }
 
-/* Mobile: one card per view, center-snapped */
+/* Mobile peek effect */
 @media (max-width: 767px) {
+  .reviews-section {
+    overflow: hidden;
+  }
+
   .reviews-carousel {
-    padding: 0 2.75rem;
+    padding: 0;
     gap: 0;
-  }
-
-  .reviews-arrow {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-
-  .reviews-arrow.our-work-arrow--prev {
-    left: 0;
-  }
-
-  .reviews-arrow.our-work-arrow--next {
-    right: 0;
   }
 
   .reviews-viewport {
-    display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 0;
-    overscroll-behavior-x: contain;
-  }
-
-  .reviews-viewport::-webkit-scrollbar {
-    display: none;
+    gap: 0.75rem;
   }
 
   .review-card {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
+    width: 74vw;
+  }
+
+  .reviews-arrow {
+    display: none;
   }
 }
 
