@@ -190,7 +190,7 @@ export default function OurWork() {
                   role={isReal ? 'button' : undefined}
                   tabIndex={isReal ? 0 : undefined}
                   aria-label={isReal ? `View full size: ${image.alt}` : undefined}
-                  onKeyDown={isReal ? (e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(image.src, image.alt) } : undefined}
+                  onKeyDown={isReal ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(image.src, image.alt) } } : undefined}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
